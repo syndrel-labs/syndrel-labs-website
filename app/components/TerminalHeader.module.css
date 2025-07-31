@@ -1,0 +1,45 @@
+.container {
+  font-family: var(--font-geist-mono);
+  font-size: 5rem;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  text-align: center;
+}
+
+.terminalText {
+  position: relative;
+  display: inline-block;
+  transition: all 0.8s ease-out;
+}
+
+.text {
+  color: var(--foreground);
+}
+
+.cursor {
+  animation: blink 1s infinite;
+  color: var(--foreground);
+  font-size: 0.6em;
+  transition: opacity 0.8s ease-out;
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    font-size: 2rem;
+  }
+}

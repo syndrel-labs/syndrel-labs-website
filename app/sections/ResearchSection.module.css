@@ -1,0 +1,129 @@
+.section {
+  padding: 5rem 0;
+  background-color: color-mix(in srgb, var(--muted) 50%, transparent);
+}
+
+.sectionContainer {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.sectionTitle {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--foreground);
+}
+
+.sectionDescription {
+  font-size: 1.25rem;
+  color: var(--muted-foreground);
+  max-width: 48rem;
+  margin: 0 auto;
+}
+
+.researchGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.researchCard {
+  transition: box-shadow 0.15s ease;
+}
+
+.researchCard:hover {
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.researchHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.researchTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.researchDescription {
+  font-size: 1rem;
+  color: var(--muted-foreground);
+  margin-bottom: 1.5rem;
+}
+
+.publicationsCount {
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+}
+
+.focusArea {
+  margin-bottom: 1.5rem;
+}
+
+.focusTitle {
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: var(--foreground);
+}
+
+.focusTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.researchActions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.statsContainer {
+  margin: 4rem 0 3rem 0;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.statItem {
+  text-align: center;
+}
+
+.statValue {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.statLabel {
+  color: var(--muted-foreground);
+}
+
+.ctaContainer {
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .researchGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .statsGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

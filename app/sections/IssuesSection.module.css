@@ -1,0 +1,46 @@
+.section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem 2rem;
+}
+
+.container {
+  max-width: 64rem;
+  margin: 0 auto;
+}
+
+.title {
+  font-family: var(--font-geist-mono);
+  font-size: 1.875rem;
+  margin-bottom: 3rem;
+  text-transform: lowercase;
+  color: var(--foreground);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  font-family: var(--font-geist-mono);
+  font-size: 1.125rem;
+  line-height: 1.75;
+}
+
+.line {
+  transition: opacity 0.5s ease;
+}
+
+.visible {
+  opacity: 1;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+.prompt {
+  color: var(--muted-foreground);
+  margin-right: 0.5rem;
+}

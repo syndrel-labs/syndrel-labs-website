@@ -1,0 +1,48 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  border: 1px solid transparent;
+  padding: 0.125rem 0.625rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  transition: all 0.15s ease;
+}
+
+.badge:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+/* Variants */
+.badgeDefault {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.badgeDefault:hover {
+  background-color: color-mix(in srgb, var(--primary) 80%, transparent);
+}
+
+.badgeSecondary {
+  background-color: var(--secondary);
+  color: var(--secondary-foreground);
+}
+
+.badgeSecondary:hover {
+  background-color: color-mix(in srgb, var(--secondary) 80%, transparent);
+}
+
+.badgeDestructive {
+  background-color: var(--destructive);
+  color: var(--destructive-foreground);
+}
+
+.badgeDestructive:hover {
+  background-color: color-mix(in srgb, var(--destructive) 80%, transparent);
+}
+
+.badgeOutline {
+  color: var(--foreground);
+  border-color: var(--border);
+}

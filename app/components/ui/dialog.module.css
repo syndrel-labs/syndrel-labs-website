@@ -1,0 +1,62 @@
+.dialog {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dialogOverlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgb(0 0 0 / 0.5);
+}
+
+.dialogContent {
+  position: relative;
+  z-index: 50;
+  width: 100%;
+  max-width: 32rem;
+  border-radius: 0.5rem;
+  background-color: var(--background);
+  padding: 1.5rem;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.dialogHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  text-align: center;
+}
+
+.dialogTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.025em;
+}
+
+.dialogDescription {
+  color: var(--muted-foreground);
+  font-size: 0.875rem;
+}
+
+.dialogFooter {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .dialogHeader {
+    text-align: left;
+  }
+
+  .dialogFooter {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+}

@@ -1,0 +1,127 @@
+/* Main container */
+.container {
+  min-height: 100vh;
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+/* Hero section */
+.heroSection {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 2rem;
+  position: relative;
+}
+
+.heroContent {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Scroll indicator */
+.scrollIndicator {
+  animation-delay: 1.5s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+}
+
+.scrollText {
+  font-family: var(--font-geist-mono);
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+}
+
+/* Fade in animation */
+.fadeInUp {
+  opacity: 0;
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Content sections */
+.contentSections {
+  animation-delay: 1000ms;
+  animation-fill-mode: forwards;
+}
+
+/* Ambient movement lines */
+.ambientContainer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.ambientLine {
+  position: absolute;
+  width: 1px;
+  background-color: rgba(var(--foreground-rgb), 0.1);
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.ambientLine1 {
+  top: 25%;
+  left: 25%;
+  height: 8rem;
+}
+
+.ambientLine2 {
+  top: 75%;
+  right: 33.333%;
+  height: 6rem;
+  animation-delay: 2s;
+}
+
+.ambientLine3 {
+  bottom: 33.333%;
+  left: 66.667%;
+  height: 4rem;
+  animation-delay: 4s;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .heroSection {
+    padding: 0 1rem;
+  }
+
+  .heroContent {
+    gap: 1.5rem;
+  }
+
+  .ambientLine1 {
+    height: 6rem;
+  }
+
+  .ambientLine2 {
+    height: 4rem;
+  }
+
+  .ambientLine3 {
+    height: 3rem;
+  }
+}

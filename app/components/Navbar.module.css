@@ -1,0 +1,65 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background-color: var(--background);
+  border-bottom: 1px solid rgba(var(--foreground-rgb), 0.2);
+  padding: 1rem 2rem;
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+}
+
+.logo {
+  font-family: var(--font-geist-mono);
+  font-size: 1.125rem;
+  font-weight: bold;
+  color: var(--foreground);
+}
+
+.navLinks {
+  display: flex;
+  gap: 2rem;
+  font-family: var(--font-geist-mono);
+  font-size: 0.875rem;
+  text-transform: lowercase;
+}
+
+.navLink {
+  position: relative;
+  background: none;
+  border: none;
+  color: var(--foreground);
+  cursor: pointer;
+  transition: color 0.3s ease;
+  font-family: inherit;
+  font-size: inherit;
+  text-transform: lowercase;
+}
+
+.navLink:hover {
+  color: var(--foreground);
+}
+
+.underline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  background-color: var(--foreground);
+  width: 0;
+  transition: width 0.3s ease;
+}
+
+.navLink:hover .underline {
+  width: 100%;
+}

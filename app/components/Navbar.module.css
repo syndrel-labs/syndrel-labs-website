@@ -4,8 +4,8 @@
   left: 0;
   right: 0;
   z-index: 50;
-  background-color: var(--background);
-  border-bottom: 1px solid rgba(var(--foreground-rgb), 0.2);
+  background-color: transparent;
+  border-bottom: 1px solid rgba(var(--foreground-rgb), 0.1);
   padding: 1rem 2rem;
   width: 100%;
 }
@@ -107,7 +107,8 @@
   right: -100%;
   width: 100%;
   height: 100vh;
-  background-color: var(--background);
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -115,7 +116,7 @@
   gap: 2rem;
   transition: right 0.3s ease-in-out;
   z-index: 55;
-  border-left: 1px solid rgba(var(--foreground-rgb), 0.2);
+  border-left: 1px solid rgba(var(--foreground-rgb), 0.1);
 }
 
 .mobileMenu.open {

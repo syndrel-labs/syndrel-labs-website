@@ -36,7 +36,7 @@ const IssuesSection = () => {
     if (element) observer.observe(element);
 
     return () => observer.disconnect();
-  }, []);
+  }, [lines.length]);
 
   return (
     <section id="issues" className={styles.section}>

@@ -25,10 +25,9 @@ const Dialog = ({ open, onOpenChange, children }: DialogProps) => {
 
 interface DialogTriggerProps {
   children: React.ReactNode;
-  asChild?: boolean;
 }
 
-const DialogTrigger = ({ children, asChild }: DialogTriggerProps) => {
+const DialogTrigger = ({ children }: DialogTriggerProps) => {
   return <>{children}</>;
 };
 

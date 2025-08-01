@@ -14,10 +14,10 @@ const TerminalHeader = ({ onTypingComplete }: TerminalHeaderProps) => {
   const [productIndex, setProductIndex] = useState(0);
   const [showCursor, setShowCursor] = useState(true);
 
-  const products = ['lattice', 'fiber', 'strata'];
   const baseText = 'syndrel_';
 
   useEffect(() => {
+    const products = ['lattice', 'fiber', 'strata'];
     if (phase === 'complete') return;
 
     const timeout = setTimeout(() => {

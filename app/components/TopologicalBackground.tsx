@@ -7,8 +7,8 @@ import * as THREE from 'three';
 
 function TopologicalGrid(): React.JSX.Element {
   const meshRef = useRef<THREE.Points>(null)
-  const count = 50 // Reduced for better performance
-  const sep = 0.5
+  const count = 400 // Much larger grid for infinite effect
+  const sep = 0.35 // Smaller separation for denser grid
   const grid: [number, number, number][] = []
 
   for (let xi = 0; xi < count; xi++) {
@@ -35,7 +35,7 @@ function TopologicalGrid(): React.JSX.Element {
     for (let i = 0; i < pos.count; i++) {
       const x = pos.getX(i)
       const z = pos.getZ(i)
-      const y = 0.3 * Math.sin(0.5 * x + t) * Math.cos(0.5 * z + t) + 0.5
+      const y = 0.3 * Math.sin(0.4 * x + t) * Math.cos(0.4 * z + t) + 0.5
       pos.setY(i, y)
     }
     pos.needsUpdate = true

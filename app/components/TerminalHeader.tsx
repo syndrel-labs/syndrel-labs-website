@@ -16,14 +16,14 @@ const TerminalHeader = ({ onTypingComplete }: TerminalHeaderProps) => {
 
   const baseText = 'syndrel_';
 
-  // Initial typing effect
+  // Initial typing effect - start with syndrel_lattice
   useEffect(() => {
     if (phase !== 'initial') return;
 
-    const fullText = 'syndrel_labs';
+    const initialText = 'syndrel_lattice';
     const timeout = setTimeout(() => {
-      if (currentIndex < fullText.length) {
-        setDisplayText(fullText.slice(0, currentIndex + 1));
+      if (currentIndex < initialText.length) {
+        setDisplayText(initialText.slice(0, currentIndex + 1));
         setCurrentIndex(currentIndex + 1);
       } else {
         // Wait, then start deleting
@@ -56,7 +56,7 @@ const TerminalHeader = ({ onTypingComplete }: TerminalHeaderProps) => {
   useEffect(() => {
     if (phase !== 'products') return;
 
-    const products = ['lattice', 'fiber', 'strata'];
+    const products = ['fiber', 'strata'];
     const currentProduct = products[productIndex];
     const targetText = baseText + currentProduct;
 

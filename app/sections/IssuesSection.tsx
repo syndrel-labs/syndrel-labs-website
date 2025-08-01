@@ -11,7 +11,7 @@ const IssuesSection = () => {
     "Our research explores emergent behavior in distributed agents—drones, traffic systems, power grids.",
     "Our tools learn not only actions, but the protocols by which agents decide and interact.",
     "",
-    "This is not about language. It's about coordination."
+    "This is not about language. It&apos;s about coordination."
   ];
 
   useEffect(() => {

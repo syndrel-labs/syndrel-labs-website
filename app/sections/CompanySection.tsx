@@ -10,7 +10,7 @@ const CompanySection = () => {
     {
       id: 2,
       title: 'impact_',
-      description: 'Creating solutions that make a real difference in people\'s lives.'
+      description: 'Creating solutions that make a real difference in people&apos;s lives.'
     },
     {
       id: 3,
@@ -37,7 +37,7 @@ const CompanySection = () => {
         <div className={styles.header}>
           <h2 className={styles.title}>company_</h2>
           <p className={styles.description}>
-            We're a team of innovators, researchers, and problem-solvers dedicated to creating technology that serves humanity.
+            We&apos;re a team of innovators, researchers, and problem-solvers dedicated to creating technology that serves humanity.
           </p>
         </div>
 
@@ -46,7 +46,7 @@ const CompanySection = () => {
           <div className={styles.missionContent}>
             <h3 className={styles.missionTitle}>mission_</h3>
             <p className={styles.missionText}>
-              Syndrel Labs exists to ensure the world's most critical systems can adapt, coordinate, and endure in the face of uncertainty. We believe that solving humanity's most complex challenges requires collective intelligence, where systems learn to work together. Our mission is to advance this frontier by developing technologies that unlock resilient, sustainable, and intelligent coordination across the infrastructures that matter most.
+              Syndrel Labs exists to ensure the world&apos;s most critical systems can adapt, coordinate, and endure in the face of uncertainty. We believe that solving humanity&apos;s most complex challenges requires collective intelligence, where systems learn to work together. Our mission is to advance this frontier by developing technologies that unlock resilient, sustainable, and intelligent coordination across the infrastructures that matter most.
             </p>
           </div>
         </div>
@@ -83,7 +83,7 @@ const CompanySection = () => {
           <div className={styles.ctaContent}>
             <h3 className={styles.ctaTitle}>join_mission_</h3>
             <p className={styles.ctaText}>
-              Ready to make a difference? We're always looking for talented individuals who share our passion for innovation and impact.
+              Ready to make a difference? We&apos;re always looking for talented individuals who share our passion for innovation and impact.
             </p>
             <div className={styles.ctaButtons}>
               <a href="https://github.com/syndrel-labs" target="_blank" rel="noopener noreferrer" className={styles.ctaButton}>[ github ]</a>

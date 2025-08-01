@@ -5,32 +5,44 @@ const ResearchSection = () => {
     {
       id: 1,
       title: 'Topological MARL',
-      description: 'Multi-agent reinforcement learning through topological coordination structures.',
-      focus: ['Graph Neural Networks', 'Topology Learning', 'Agent Coordination'],
+      description: 'Multi-agent reinforcement learning structured by the geometric and categorical foundations of space, flow, and compositional reasoning.',
+      focus: [
+        'Topological Abstractions for Coordination',
+        'Geometric Learning in Multi-Agent Systems',
+        'Categorical Structures in Policy Composition'
+      ],
       publications: 12,
       status: 'Active'
     },
     {
       id: 2,
-      title: 'Neural Architecture Search via agent teams',
-      description: 'Evolutionary approaches to neural network design using coordinated agent populations.',
-      focus: ['Evolutionary Algorithms', 'NAS Optimization', 'Agent Teams'],
+      title: 'Neural Architecture Search',
+      description: 'Teams of intelligent agents co-develop novel deep learning architectures through specialized design roles.',
+      focus: ['Collaborative Model Construction', 'Agent-Driven Architecture Design', 'Role-Based Optimization'],
       publications: 8,
       status: 'Active'
     },
     {
       id: 3,
-      title: 'Emergent behavior via sheaf-coordinated dynamics',
-      description: 'Mathematical frameworks for understanding emergence in distributed systems.',
-      focus: ['Sheaf Theory', 'Emergence', 'Distributed Systems'],
+      title: 'Quantum Information and Nanosystems',
+      description: 'Multi-objective architecture search for nanoscale systems and quantum information processing.',
+      focus: [
+        'Quantum-Classical Co-Design',
+        'Nanoscale Architecture Optimization',
+        'Integrated System-Level Design'
+      ],
       publications: 15,
       status: 'Active'
     },
     {
       id: 4,
-      title: 'Multi-agent coordination protocols',
-      description: 'Protocol design for scalable coordination in heterogeneous agent environments.',
-      focus: ['Protocol Design', 'Scalability', 'Heterogeneous Agents'],
+      title: 'AI-Orchestrated Interaction with Securities Master Systems',
+      description: 'A multi-paradigm AI system designed to streamline securities research through structured reasoning and intelligent data access.',
+      focus: [
+          'Analyst-Centric Data Interfaces',
+          'Intelligent Reference Data Access',
+          'Context-Aware Knowledge Exploration for Financial Instruments'
+        ],
       publications: 10,
       status: 'Active'
     }
@@ -50,13 +62,10 @@ const ResearchSection = () => {
           {researchAreas.map((area) => (
             <div key={area.id} className={styles.card}>
               <div className={styles.cardHeader}>
-                <div className={styles.badges}>
+                <div className={styles.titleRow}>
+                  <h3 className={styles.areaTitle}>{area.title}</h3>
                   <span className={styles.statusBadge}>{area.status}</span>
-                  <span className={styles.publications}>
-                    {area.publications} publications
-                  </span>
                 </div>
-                <h3 className={styles.areaTitle}>{area.title}</h3>
                 <p className={styles.areaDescription}>
                   {area.description}
                 </p>
@@ -81,26 +90,26 @@ const ResearchSection = () => {
           ))}
         </div>
 
-        <div className={styles.stats}>
+        {/* <div className={styles.stats}>
           <div className={styles.statsGrid}>
             <div className={styles.stat}>
-              <div className={styles.statNumber}>45+</div>
-              <div className={styles.statLabel}>research_papers</div>
+              <div className={styles.statNumber}>4</div>
+              <div className={styles.statLabel}>research_areas</div>
             </div>
             <div className={styles.stat}>
-              <div className={styles.statNumber}>12</div>
-              <div className={styles.statLabel}>active_projects</div>
+              <div className={styles.statNumber}>∞</div>
+              <div className={styles.statLabel}>possibilities</div>
             </div>
             <div className={styles.stat}>
-              <div className={styles.statNumber}>8</div>
-              <div className={styles.statLabel}>research_partners</div>
+              <div className={styles.statNumber}>→</div>
+              <div className={styles.statLabel}>future_work</div>
             </div>
           </div>
 
           <button className={styles.exploreButton}>
-            [ explore_research ]
+            [ join_research ]
           </button>
-        </div>
+        </div> */}
       </div>
     </section>
   );

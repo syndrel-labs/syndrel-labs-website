@@ -41,7 +41,7 @@ const IssuesSection = () => {
   return (
     <section id="issues" className={styles.section}>
       <div className={styles.container}>
-        <h2 className={styles.title}>issues_</h2>
+        <h2 className={styles.title}>our_mission_</h2>
 
         <div className={styles.content}>
           {lines.map((line, index) => (

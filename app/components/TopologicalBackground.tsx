@@ -88,7 +88,7 @@ export default function TopologicalBackground(): React.JSX.Element {
         <ambientLight intensity={1.0} />
         <directionalLight position={[5, 5, 5]} intensity={0.8} />
         <TopologicalGrid />
-        <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={0.5} />
+        <OrbitControls enableZoom={false} enablePan={false} enableRotate={false} autoRotate autoRotateSpeed={0.5} />
       </Canvas>
     </div>
   )

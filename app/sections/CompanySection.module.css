@@ -1,80 +1,95 @@
 .section {
-  padding: 5rem 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem 2rem;
 }
 
-.sectionContainer {
-  max-width: 80rem;
+.container {
+  max-width: 72rem;
   margin: 0 auto;
-  padding: 0 1rem;
 }
 
-.sectionHeader {
-  text-align: center;
-  margin-bottom: 4rem;
+.header {
+  margin-bottom: 5rem;
 }
 
-.sectionTitle {
-  font-size: 2.25rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
+.title {
+  font-family: var(--font-geist-mono);
+  font-size: 1.875rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
   color: var(--foreground);
+  text-transform: lowercase;
 }
 
-.sectionDescription {
-  font-size: 1.25rem;
+.description {
   color: var(--muted-foreground);
-  max-width: 48rem;
-  margin: 0 auto;
+  max-width: 32rem;
+  font-family: var(--font-geist-mono);
+  line-height: 1.6;
 }
 
-.missionStatement {
-  background-color: color-mix(in srgb, var(--muted) 50%, transparent);
-  border-radius: 0.5rem;
+.mission {
+  background-color: var(--background);
+  border: 1px solid var(--foreground);
   padding: 2rem;
   margin-bottom: 4rem;
 }
 
-.missionTitle {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
+.missionContent {
   text-align: center;
+  max-width: 64rem;
+  margin: 0 auto;
+}
+
+.missionTitle {
+  font-family: var(--font-geist-mono);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--foreground);
+  text-transform: lowercase;
 }
 
 .missionText {
+  font-family: var(--font-geist-mono);
   font-size: 1.125rem;
   color: var(--muted-foreground);
   line-height: 1.625;
-  max-width: 64rem;
-  margin: 0 auto;
-  text-align: center;
 }
 
-.valuesContainer {
+.values {
   margin-bottom: 4rem;
 }
 
 .valuesTitle {
+  font-family: var(--font-geist-mono);
   font-size: 1.5rem;
-  font-weight: 700;
+  font-weight: 600;
   text-align: center;
   margin-bottom: 2rem;
+  color: var(--foreground);
+  text-transform: lowercase;
 }
 
 .valuesGrid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
-  margin-bottom: 4rem;
 }
 
 .valueCard {
+  background-color: var(--background);
+  border: 1px solid var(--foreground);
+  padding: 1.5rem;
   text-align: center;
-  transition: box-shadow 0.15s ease;
+  transition: box-shadow 0.3s ease;
 }
 
 .valueCard:hover {
-  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 .valueIcon {
@@ -83,17 +98,22 @@
 }
 
 .valueTitle {
+  font-family: var(--font-geist-mono);
   font-size: 1.125rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
+  color: var(--foreground);
+  text-transform: lowercase;
 }
 
 .valueDescription {
+  font-family: var(--font-geist-mono);
   color: var(--muted-foreground);
   font-size: 0.875rem;
+  line-height: 1.5;
 }
 
-.statsContainer {
+.stats {
   margin-bottom: 4rem;
 }
 
@@ -103,42 +123,54 @@
   gap: 2rem;
 }
 
-.statItem {
+.stat {
   text-align: center;
 }
 
-.statValue {
+.statNumber {
+  font-family: var(--font-geist-mono);
   font-size: 2.25rem;
-  font-weight: 700;
-  color: var(--primary);
+  font-weight: bold;
+  color: var(--foreground);
   margin-bottom: 0.5rem;
 }
 
 .statLabel {
+  font-family: var(--font-geist-mono);
   color: var(--muted-foreground);
+  font-size: 0.875rem;
+  text-transform: lowercase;
 }
 
-.ctaSection {
+.cta {
   text-align: center;
-  background-color: var(--primary);
-  color: var(--primary-foreground);
-  border-radius: 0.5rem;
+}
+
+.ctaContent {
+  background-color: var(--background);
+  border: 1px solid var(--foreground);
   padding: 2rem;
   margin-bottom: 2rem;
 }
 
 .ctaTitle {
+  font-family: var(--font-geist-mono);
   font-size: 1.5rem;
-  font-weight: 700;
+  font-weight: 600;
   margin-bottom: 1rem;
+  color: var(--foreground);
+  text-transform: lowercase;
 }
 
 .ctaText {
+  font-family: var(--font-geist-mono);
   font-size: 1.125rem;
   margin-bottom: 1.5rem;
   max-width: 32rem;
   margin-left: auto;
   margin-right: auto;
+  color: var(--muted-foreground);
+  line-height: 1.6;
 }
 
 .ctaButtons {
@@ -148,21 +180,38 @@
   justify-content: center;
 }
 
+.ctaButton {
+  font-family: var(--font-geist-mono);
+  background: var(--foreground);
+  border: 1px solid var(--foreground);
+  color: var(--background);
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: lowercase;
+}
+
+.ctaButton:hover {
+  background: transparent;
+  color: var(--foreground);
+}
+
 .ctaButtonSecondary {
-  background-color: var(--secondary);
-  color: var(--secondary-foreground);
-  border: 1px solid transparent;
+  font-family: var(--font-geist-mono);
+  background: transparent;
+  border: 1px solid var(--foreground);
+  color: var(--foreground);
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: lowercase;
 }
 
-.ctaButtonOutline {
-  background-color: transparent;
-  border: 1px solid var(--primary-foreground);
-  color: var(--primary-foreground);
-}
-
-.ctaButtonOutline:hover {
-  background-color: var(--primary-foreground);
-  color: var(--primary);
+.ctaButtonSecondary:hover {
+  background: var(--foreground);
+  color: var(--background);
 }
 
 @media (min-width: 640px) {
@@ -178,6 +227,10 @@
 
   .statsGrid {
     grid-template-columns: repeat(4, 1fr);
+  }
+
+  .title {
+    font-size: 2.25rem;
   }
 }
 

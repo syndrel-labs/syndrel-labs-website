@@ -1,12 +1,4 @@
-import { Badge } from '@components/ui/badge'
-import { Button } from '@components/ui/button'
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@components/ui/card'
+import styles from './ProductsSection.module.css';
 
 const products = [
   {
@@ -15,7 +7,7 @@ const products = [
     description:
       'Coordination protocol runtime for distributed multi-agent systems.',
     category: 'Coordination',
-    status: 'Live',
+    status: 'Beta',
     features: [
       'Graph-based topology',
       'Realtime reconfiguration',
@@ -28,7 +20,7 @@ const products = [
     description:
       'Adaptive communication fabric with dynamic topology learning.',
     category: 'Messaging',
-    status: 'Beta',
+    status: 'Coming Soon',
     features: [
       'Learned channel routing',
       'Topology-sensitive messaging',
@@ -41,7 +33,7 @@ const products = [
     description:
       'Layered control for mission-critical, multi-level agent orchestration.',
     category: 'Control',
-    status: 'Live',
+    status: 'Coming Soon',
     features: [
       'Hierarchical task scheduling',
       'Failover-safe delegation',
@@ -63,78 +55,59 @@ const products = [
   },
 ]
 
-const getStatusVariant = (status: string): 'default' | 'secondary' | 'outline' => {
-  switch (status) {
-    case 'Live':
-      return 'default'
-    case 'Beta':
-      return 'secondary'
-    case 'Coming Soon':
-    default:
-      return 'outline'
-  }
-}
-
-export default function ProductsSection() {
+const ProductsSection = () => {
   return (
-    <section id="products" className="py-24 border-t border-border">
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="mb-20">
-          <h2 className="text-3xl sm:text-4xl font-mono font-semibold mb-3 text-foreground">
-            modules_
-          </h2>
-          <p className="text-muted-foreground max-w-2xl font-mono">
+    <section id="products" className={styles.section}>
+      <div className={styles.container}>
+        <div className={styles.header}>
+          <h2 className={styles.title}>modules_</h2>
+          <p className={styles.description}>
             Modular systems for emergent coordination, messaging, and learning in distributed environments.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className={styles.grid}>
           {products.map((product) => (
-            <Card
-              key={product.id}
-              className="bg-background border border-border hover:shadow-md transition-shadow"
-            >
-              <CardHeader>
-                <div className="flex items-center justify-between mb-2">
-                  <Badge variant="outline" className="text-xs uppercase tracking-wider">
-                    {product.category}
-                  </Badge>
-                  <Badge variant={getStatusVariant(product.status)} className="text-xs">
+            <div key={product.id} className={styles.card}>
+              <div className={styles.cardHeader}>
+                <div className={styles.badges}>
+                  <span className={styles.categoryBadge}>{product.category}</span>
+                  <span className={`${styles.statusBadge} ${styles[product.status.toLowerCase().replace(' ', '')]}`}>
                     {product.status}
-                  </Badge>
+                  </span>
                 </div>
-                <CardTitle className="font-mono text-lg">{product.name}</CardTitle>
-                <CardDescription className="font-mono text-sm text-muted-foreground">
+                <h3 className={styles.productName}>{product.name}</h3>
+                <p className={styles.productDescription}>
                   {product.description}
-                </CardDescription>
-              </CardHeader>
+                </p>
+              </div>
 
-              <CardContent>
-                <div className="mt-4 mb-6">
-                  <p className="font-semibold text-sm mb-2">Capabilities:</p>
-                  <ul className="space-y-1 pl-4 list-disc text-sm text-muted-foreground">
+              <div className={styles.cardContent}>
+                <div className={styles.capabilities}>
+                  <p className={styles.capabilitiesTitle}>capabilities_</p>
+                  <ul className={styles.featuresList}>
                     {product.features.map((feature, index) => (
-                      <li key={index} className="font-mono">{feature}</li>
+                      <li key={index} className={styles.feature}>{feature}</li>
                     ))}
                   </ul>
                 </div>
-                <div className="flex justify-end gap-3">
-                  <Button variant="outline" size="sm">
-                    Docs
-                  </Button>
-                  <Button size="sm">Demo</Button>
+                <div className={styles.actions}>
+                  <button className={styles.button}>Docs</button>
+                  <button className={`${styles.button} ${styles.primaryButton}`}>Demo</button>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           ))}
         </div>
 
-        <div className="text-center mt-16">
-          <Button size="lg" variant="outline">
+        <div className={styles.footer}>
+          <button className={styles.footerButton}>
             full module list_
-          </Button>
+          </button>
         </div>
       </div>
     </section>
   )
 }
+
+export default ProductsSection;

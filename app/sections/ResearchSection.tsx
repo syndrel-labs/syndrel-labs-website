@@ -1,115 +1,109 @@
-import { Badge } from '@components/ui/badge';
-import { Button } from '@components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@components/ui/card';
+import styles from './ResearchSection.module.css';
 
-export default function ResearchSection() {
+const ResearchSection = () => {
   const researchAreas = [
     {
       id: 1,
-      title: 'Artificial Intelligence & Machine Learning',
-      description: 'Advancing AI capabilities for real-world applications and ethical AI development.',
-      focus: ['Neural Networks', 'Natural Language Processing', 'Computer Vision'],
+      title: 'Topological MARL',
+      description: 'Multi-agent reinforcement learning through topological coordination structures.',
+      focus: ['Graph Neural Networks', 'Topology Learning', 'Agent Coordination'],
       publications: 12,
       status: 'Active'
     },
     {
       id: 2,
-      title: 'Sustainable Technology',
-      description: 'Developing eco-friendly technologies and renewable energy solutions.',
-      focus: ['Green Computing', 'Energy Efficiency', 'Carbon Reduction'],
+      title: 'Neural Architecture Search via agent teams',
+      description: 'Evolutionary approaches to neural network design using coordinated agent populations.',
+      focus: ['Evolutionary Algorithms', 'NAS Optimization', 'Agent Teams'],
       publications: 8,
       status: 'Active'
     },
     {
       id: 3,
-      title: 'Digital Health',
-      description: 'Innovating healthcare delivery through technology and data science.',
-      focus: ['Telemedicine', 'Health Analytics', 'Preventive Care'],
+      title: 'Emergent behavior via sheaf-coordinated dynamics',
+      description: 'Mathematical frameworks for understanding emergence in distributed systems.',
+      focus: ['Sheaf Theory', 'Emergence', 'Distributed Systems'],
       publications: 15,
       status: 'Active'
     },
     {
       id: 4,
-      title: 'Cybersecurity & Privacy',
-      description: 'Protecting digital assets and ensuring user privacy in the digital age.',
-      focus: ['Zero Trust', 'Privacy-Preserving AI', 'Threat Intelligence'],
+      title: 'Multi-agent coordination protocols',
+      description: 'Protocol design for scalable coordination in heterogeneous agent environments.',
+      focus: ['Protocol Design', 'Scalability', 'Heterogeneous Agents'],
       publications: 10,
       status: 'Active'
     }
   ];
 
   return (
-    <section id="research" className="py-20 bg-muted/50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-foreground mb-4">
-            Research & Innovation
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Pushing the boundaries of technology through cutting-edge research and development.
+    <section id="research" className={styles.section}>
+      <div className={styles.container}>
+        <div className={styles.header}>
+          <h2 className={styles.title}>research_</h2>
+          <p className={styles.description}>
+            Mathematical frameworks for understanding emergence in distributed systems.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className={styles.grid}>
           {researchAreas.map((area) => (
-            <Card key={area.id} className="hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <div className="flex items-center justify-between mb-2">
-                  <Badge variant="default">{area.status}</Badge>
-                  <span className="text-sm text-muted-foreground">
+            <div key={area.id} className={styles.card}>
+              <div className={styles.cardHeader}>
+                <div className={styles.badges}>
+                  <span className={styles.statusBadge}>{area.status}</span>
+                  <span className={styles.publications}>
                     {area.publications} publications
                   </span>
                 </div>
-                <CardTitle className="text-xl">{area.title}</CardTitle>
-                <CardDescription className="text-base">
+                <h3 className={styles.areaTitle}>{area.title}</h3>
+                <p className={styles.areaDescription}>
                   {area.description}
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="mb-6">
-                  <h4 className="font-semibold mb-3">Research Focus:</h4>
-                  <div className="flex flex-wrap gap-2">
+                </p>
+              </div>
+              <div className={styles.cardContent}>
+                <div className={styles.focus}>
+                  <h4 className={styles.focusTitle}>research_focus_</h4>
+                  <div className={styles.focusTags}>
                     {area.focus.map((item, index) => (
-                      <Badge key={index} variant="secondary" className="text-xs">
+                      <span key={index} className={styles.focusTag}>
                         {item}
-                      </Badge>
+                      </span>
                     ))}
                   </div>
                 </div>
-                <div className="flex space-x-3">
-                  <Button variant="outline" size="sm">
-                    View Publications
-                  </Button>
-                  <Button variant="outline" size="sm">
-                    Research Team
-                  </Button>
+                <div className={styles.actions}>
+                  <button className={styles.button}>[ view_publications ]</button>
+                  <button className={styles.button}>[ research_team ]</button>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           ))}
         </div>
 
-        <div className="mt-16 text-center">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-            <div className="text-center">
-              <div className="text-4xl font-bold text-primary mb-2">45+</div>
-              <div className="text-muted-foreground">Research Papers</div>
+        <div className={styles.stats}>
+          <div className={styles.statsGrid}>
+            <div className={styles.stat}>
+              <div className={styles.statNumber}>45+</div>
+              <div className={styles.statLabel}>research_papers</div>
             </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-primary mb-2">12</div>
-              <div className="text-muted-foreground">Active Projects</div>
+            <div className={styles.stat}>
+              <div className={styles.statNumber}>12</div>
+              <div className={styles.statLabel}>active_projects</div>
             </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-primary mb-2">8</div>
-              <div className="text-muted-foreground">Research Partners</div>
+            <div className={styles.stat}>
+              <div className={styles.statNumber}>8</div>
+              <div className={styles.statLabel}>research_partners</div>
             </div>
           </div>
 
-          <Button size="lg">
-            Explore Research
-          </Button>
+          <button className={styles.exploreButton}>
+            [ explore_research ]
+          </button>
         </div>
       </div>
     </section>
   );
-}
+};
+
+export default ResearchSection;

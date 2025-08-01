@@ -46,8 +46,8 @@ const Footer = () => {
             © 2025 syndrel_labs — all transmissions encrypted.
           </div>
           <div className={styles.bottomLinks}>
-            <a href="#github" className={styles.link}>[ github ]</a>
-            <a href="#pgp" className={styles.link}>[ pgp ]</a>
+            <a href="https://github.com/syndrel-labs" target="_blank" rel="noopener noreferrer" className={styles.link}>[ github ]</a>
+            <a href="https://huggingface.co/syndrel-labs" target="_blank" rel="noopener noreferrer" className={styles.link}>[ hugging_face ]</a>
           </div>
         </div>
       </div>

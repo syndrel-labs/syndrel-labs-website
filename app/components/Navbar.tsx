@@ -19,17 +19,10 @@ const Navbar = () => {
 
         <div className={styles.navLinks}>
           <button
-            onClick={() => scrollToSection('company')}
-            className={styles.navLink}
-          >
-            company_
-            <div className={styles.underline} />
-          </button>
-          <button
             onClick={() => scrollToSection('products')}
             className={styles.navLink}
           >
-            products_
+            modules_
             <div className={styles.underline} />
           </button>
           <button
@@ -37,6 +30,13 @@ const Navbar = () => {
             className={styles.navLink}
           >
             research_
+            <div className={styles.underline} />
+          </button>
+          <button
+            onClick={() => scrollToSection('company')}
+            className={styles.navLink}
+          >
+            company_
             <div className={styles.underline} />
           </button>
         </div>

@@ -7,11 +7,13 @@ const IssuesSection = () => {
   const [visibleLines, setVisibleLines] = useState(0);
 
   const lines = [
-    "We build modular systems that learn to coordinate.",
-    "Our research explores emergent behavior in distributed agents—drones, traffic systems, power grids.",
-    "Our tools learn not only actions, but the protocols by which agents decide and interact.",
+    "We build a modular SDK that enables agents—software, hardware, or hybrid—to learn how to coordinate, adapt, and communicate in real time.",
+    "Our research addresses the core challenge of distributed intelligence: how autonomous agents can construct and evolve communication protocols under real-world constraints.",
+    "From drone swarms to power grids, our platform allows agents to not only act—but to negotiate structure, exchange information, and align behavior in dynamic environments.",
+    "Coordination isn't a downstream detail. It's the central problem of the next generation of systems.",
+    "Our SDK is the first to fuse multi-agent reinforcement learning with topological learning structures, enabling systems that aren't just smart—but structurally aware.",
     "",
-    "This is not about language. It&apos;s about coordination."
+    "This is not about language. It's about architecture. It's about learning how to operate as a team."
   ];
 
   useEffect(() => {

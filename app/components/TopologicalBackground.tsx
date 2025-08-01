@@ -35,7 +35,7 @@ function TopologicalGrid(): React.JSX.Element {
     for (let i = 0; i < pos.count; i++) {
       const x = pos.getX(i)
       const z = pos.getZ(i)
-      const y = 0.3 * Math.sin(0.5 * x + t) * Math.cos(0.5 * z + t)
+      const y = 0.3 * Math.sin(0.5 * x + t) * Math.cos(0.5 * z + t) + 0.5
       pos.setY(i, y)
     }
     pos.needsUpdate = true
@@ -69,9 +69,21 @@ export default function TopologicalBackground(): React.JSX.Element {
       left: 0,
       width: '100%',
       height: '100%',
-      zIndex: -1,
+      zIndex: 1, // Changed from -1 to 1 to test
       background: 'linear-gradient(135deg, #000000 0%, #1a1a1a 100%)'
     }}>
+      {/* Test div to see if component is rendering */}
+      <div style={{
+        position: 'absolute',
+        top: '10px',
+        left: '10px',
+        color: 'red',
+        zIndex: 1000,
+        fontSize: '20px',
+        fontWeight: 'bold'
+      }}>
+      </div>
+
       <Canvas camera={{ position: [0, 5, 10], fov: 45 }}>
         <ambientLight intensity={1.0} />
         <directionalLight position={[5, 5, 5]} intensity={0.8} />

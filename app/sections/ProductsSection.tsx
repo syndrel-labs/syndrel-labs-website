@@ -5,27 +5,27 @@ const products = [
     id: 1,
     name: 'syndrel_lattice',
     description:
-      'Coordination protocol runtime for distributed multi-agent systems.',
+      'Coordination and consensus protocol for distributed multi-agent systems.',
     category: 'Coordination',
     status: 'Beta',
-    features: [
-      'Graph-based topology',
-      'Realtime reconfiguration',
-      'Modular agent interface',
-    ],
+          features: [
+        'Dynamic communication topology',
+        'Local-to-global consensus',
+        'Emergent coordination patterns',
+      ],
   },
   {
     id: 2,
     name: 'syndrel_fiber',
     description:
-      'Adaptive communication fabric with dynamic topology learning.',
+      'Secure, decentralized message fabric with adversary-aware routing.',
     category: 'Messaging',
     status: 'Coming Soon',
-    features: [
-      'Learned channel routing',
-      'Topology-sensitive messaging',
-      'Inter-agent bandwidth shaping',
-    ],
+          features: [
+        'Threat-adaptive routing architecture',
+        'Autonomous interference response system',
+        'Decentralized fault recovery',
+      ],
   },
   {
     id: 3,
@@ -36,7 +36,7 @@ const products = [
     status: 'Coming Soon',
     features: [
       'Hierarchical task scheduling',
-      'Failover-safe delegation',
+      'Dynamic command reshaping under disrupted chains',
       'Composable policies',
     ],
   },
@@ -44,13 +44,13 @@ const products = [
     id: 4,
     name: 'syndrel_nas',
     description:
-      'Multi-agent neural architecture search with communication-optimized agents.',
+      'Multi-agent neural architecture search with distributed design specialists.',
     category: 'Architecture',
     status: 'Coming Soon',
     features: [
       'Distributed NAS agents',
       'Multi-objective tuning',
-      'Auto-learned training graphs',
+      'Emergent training structures',
     ],
   },
 ]
@@ -92,7 +92,7 @@ const ProductsSection = () => {
                   </ul>
                 </div>
                 <div className={styles.actions}>
-                  <button className={styles.button}>Docs</button>
+                  <button className={styles.button}>Whitepaper</button>
                   <button className={`${styles.button} ${styles.primaryButton}`}>Demo</button>
                 </div>
               </div>
@@ -100,11 +100,7 @@ const ProductsSection = () => {
           ))}
         </div>
 
-        <div className={styles.footer}>
-          <button className={styles.footerButton}>
-            full module list_
-          </button>
-        </div>
+
       </div>
     </section>
   )

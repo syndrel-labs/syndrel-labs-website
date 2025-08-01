@@ -85,7 +85,10 @@ export default function TopologicalBackground(): React.JSX.Element {
       }}>
       </div>
 
-      <Canvas camera={{ position: [0, 5, 10], fov: 45 }}>
+      <Canvas
+        camera={{ position: [0, 5, 10], fov: 45 }}
+        style={{ pointerEvents: 'none' }}
+      >
         <ambientLight intensity={1.0} />
         <directionalLight position={[5, 5, 5]} intensity={0.8} />
         <TopologicalGrid />

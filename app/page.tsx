@@ -24,11 +24,13 @@ const Index = () => {
         <div className={styles.heroContent}>
           <TerminalHeader onTypingComplete={() => setShowSections(true)} />
 
-          <div className={`${styles.fadeInUp} ${styles.scrollIndicator}`}>
-            <div className={styles.scrollText}>
-              scroll_↓
+          {showSections && (
+            <div className={`${styles.fadeInUp} ${styles.scrollIndicator}`}>
+              <div className={styles.scrollText}>
+                scroll_↓
+              </div>
             </div>
-          </div>
+          )}
         </div>
 
         {/* Subtle ambient movement */}

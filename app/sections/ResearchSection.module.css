@@ -213,3 +213,56 @@
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .section {
+    padding: 2rem 1rem;
+  }
+
+  .header {
+    margin-bottom: 3rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .description {
+    font-size: 0.875rem;
+  }
+
+  .card {
+    padding: 1rem;
+  }
+
+  .actions {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .button {
+    width: 100%;
+    text-align: center;
+  }
+
+  .statsGrid {
+    gap: 1.5rem;
+  }
+
+  .statNumber {
+    font-size: 1.875rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .focusTags {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .focusTag {
+    width: 100%;
+    text-align: center;
+  }
+}

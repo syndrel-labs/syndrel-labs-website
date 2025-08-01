@@ -70,7 +70,8 @@ export default function TopologicalBackground(): React.JSX.Element {
       width: '100%',
       height: '100%',
       zIndex: 1, // Changed from -1 to 1 to test
-      background: 'linear-gradient(135deg, #000000 0%, #1a1a1a 100%)'
+      background: 'linear-gradient(135deg, #000000 0%, #1a1a1a 100%)',
+      pointerEvents: 'none'
     }}>
       {/* Test div to see if component is rendering */}
       <div style={{

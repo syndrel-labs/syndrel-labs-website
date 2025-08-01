@@ -7,13 +7,11 @@ const IssuesSection = () => {
   const [visibleLines, setVisibleLines] = useState(0);
 
   const lines = [
-    "We build a modular SDK that enables agents—software, hardware, or hybrid—to learn how to coordinate, adapt, and communicate in real time.",
+    "We build a modular SDK that enables agents to learn to optimally coordinate, adapt, and communicate in real time.",
     "Our research addresses the core challenge of distributed intelligence: how autonomous agents can construct and evolve communication protocols under real-world constraints.",
-    "From drone swarms to power grids, our platform allows agents to not only act—but to negotiate structure, exchange information, and align behavior in dynamic environments.",
-    "Coordination isn't a downstream detail. It's the central problem of the next generation of systems.",
-    "Our SDK is the first to fuse multi-agent reinforcement learning with topological learning structures, enabling systems that aren't just smart—but structurally aware.",
-    "",
-    "This is not about language. It's about architecture. It's about learning how to operate as a team."
+    "From drone swarms to power grids, our framework allows agents to not only act but to negotiate structure, exchange information, and align behavior in dynamic environments.",
+    "Our SDK is the first to fuse multi-agent reinforcement learning with topological learning structures, enabling systems that aren't just smart but structurally aware.",
+    "Coordination isn't a downstream detail. It's the central problem of the next generation of systems. It's about architecture. It's about learning how to operate as a team."
   ];
 
   useEffect(() => {

@@ -3,6 +3,7 @@
 import Footer from '@components/Footer';
 import Navbar from '@components/Navbar';
 import TerminalHeader from '@components/TerminalHeader';
+import TopologicalBackground from '@components/TopologicalBackground';
 import CompanySection from '@sections/CompanySection';
 import IssuesSection from '@sections/IssuesSection';
 import ProductsSection from '@sections/ProductsSection';
@@ -19,6 +20,7 @@ const Index = () => {
 
       {/* Hero Section */}
       <section className={styles.heroSection}>
+        <TopologicalBackground />
         <div className={styles.heroContent}>
           <TerminalHeader onTypingComplete={() => setShowSections(true)} />
 

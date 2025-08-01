@@ -5,30 +5,30 @@ const CompanySection = () => {
     {
       id: 1,
       title: 'innovation_',
-      description: 'Pushing boundaries and exploring new possibilities in technology.'
+      description: 'Building systems that solve real problems.'
     },
     {
       id: 2,
       title: 'impact_',
-      description: 'Creating solutions that make a real difference in people&apos;s lives.'
+      description: 'Delivering measurable results in critical domains.'
     },
     {
       id: 3,
       title: 'integrity_',
-      description: 'Maintaining the highest ethical standards in everything we do.'
+      description: 'Transparent, accountable, and reliable systems.'
     },
     {
       id: 4,
       title: 'collaboration_',
-      description: 'Working together with partners and communities to achieve more.'
+      description: 'Partnering with researchers and institutions to advance the field.'
     }
   ];
 
   const fieldsOfInterest = [
-    { label: 'military_systems', value: 'defense' },
+    { label: 'ew_advantage', value: 'defense' },
     { label: 'autonomous_systems', value: 'robotics' },
-    { label: 'trading_algorithms', value: 'finance' },
-    { label: 'precision_farming', value: 'agriculture' }
+    { label: 'intelligent_exploration', value: 'finance' },
+    { label: 'info_and_nanosystems', value: 'quantum' }
   ];
 
   return (
@@ -37,7 +37,7 @@ const CompanySection = () => {
         <div className={styles.header}>
           <h2 className={styles.title}>company_</h2>
           <p className={styles.description}>
-            We&apos;re a team of innovators, researchers, and problem-solvers dedicated to creating technology that serves humanity.
+            Our work explores the mathematical and computational structures that enable intelligent behavior in complex, distributed environments.
           </p>
         </div>
 
@@ -81,9 +81,9 @@ const CompanySection = () => {
         {/* CTA */}
         <div className={styles.cta}>
           <div className={styles.ctaContent}>
-            <h3 className={styles.ctaTitle}>join_mission_</h3>
+            <h3 className={styles.ctaTitle}>contact_</h3>
             <p className={styles.ctaText}>
-              Ready to make a difference? We&apos;re always looking for talented individuals who share our passion for innovation and impact.
+              We seek collaborators who share our vision for advancing distributed intelligence and coordination systems.
             </p>
             <div className={styles.ctaButtons}>
               <a href="https://github.com/syndrel-labs" target="_blank" rel="noopener noreferrer" className={styles.ctaButton}>[ github ]</a>

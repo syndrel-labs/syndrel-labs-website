@@ -1,13 +1,26 @@
 'use client';
 
+import { useState } from 'react';
+import { useMobile } from '../hooks/useMobile';
 import styles from './Navbar.module.css';
 
 const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const isMobile = useMobile();
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
+    // Close mobile menu after clicking a link
+    if (isMobile) {
+      setIsMenuOpen(false);
+    }
+  };
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
   };
 
   return (
@@ -17,29 +30,64 @@ const Navbar = () => {
           syndrel_labs
         </div>
 
-        <div className={styles.navLinks}>
-          <button
-            onClick={() => scrollToSection('products')}
-            className={styles.navLink}
-          >
-            modules_
-            <div className={styles.underline} />
-          </button>
-          <button
-            onClick={() => scrollToSection('research')}
-            className={styles.navLink}
-          >
-            research_
-            <div className={styles.underline} />
-          </button>
-          <button
-            onClick={() => scrollToSection('company')}
-            className={styles.navLink}
-          >
-            company_
-            <div className={styles.underline} />
-          </button>
-        </div>
+        {isMobile ? (
+          <>
+            <button
+              className={`${styles.hamburger} ${isMenuOpen ? styles.active : ''}`}
+              onClick={toggleMenu}
+              aria-label="Toggle menu"
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+
+            <div className={`${styles.mobileMenu} ${isMenuOpen ? styles.open : ''}`}>
+              <button
+                onClick={() => scrollToSection('products')}
+                className={styles.mobileNavLink}
+              >
+                modules_
+              </button>
+              <button
+                onClick={() => scrollToSection('research')}
+                className={styles.mobileNavLink}
+              >
+                research_
+              </button>
+              <button
+                onClick={() => scrollToSection('company')}
+                className={styles.mobileNavLink}
+              >
+                company_
+              </button>
+            </div>
+          </>
+        ) : (
+          <div className={styles.navLinks}>
+            <button
+              onClick={() => scrollToSection('products')}
+              className={styles.navLink}
+            >
+              modules_
+              <div className={styles.underline} />
+            </button>
+            <button
+              onClick={() => scrollToSection('research')}
+              className={styles.navLink}
+            >
+              research_
+              <div className={styles.underline} />
+            </button>
+            <button
+              onClick={() => scrollToSection('company')}
+              className={styles.navLink}
+            >
+              company_
+              <div className={styles.underline} />
+            </button>
+          </div>
+        )}
       </div>
     </nav>
   );

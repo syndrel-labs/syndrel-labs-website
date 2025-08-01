@@ -24,13 +24,11 @@ const Index = () => {
         <div className={styles.heroContent}>
           <TerminalHeader onTypingComplete={() => setShowSections(true)} />
 
-          {showSections && (
-            <div className={`${styles.fadeInUp} ${styles.scrollIndicator}`}>
-              <div className={styles.scrollText}>
-                scroll_↓
-              </div>
+          <div className={`${styles.fadeInUp} ${styles.scrollIndicator}`}>
+            <div className={styles.scrollText}>
+              scroll_↓
             </div>
-          )}
+          </div>
         </div>
 
         {/* Subtle ambient movement */}
@@ -42,15 +40,13 @@ const Index = () => {
       </section>
 
       {/* Content Sections */}
-      {showSections && (
-        <div className={`${styles.fadeInUp} ${styles.contentSections}`}>
-          <IssuesSection />
-          <ProductsSection />
-          <ResearchSection />
-          <CompanySection />
-          <Footer />
-        </div>
-      )}
+      <div className={`${styles.fadeInUp} ${styles.contentSections}`}>
+        <IssuesSection />
+        <ProductsSection />
+        <ResearchSection />
+        <CompanySection />
+        <Footer />
+      </div>
     </div>
   );
 };

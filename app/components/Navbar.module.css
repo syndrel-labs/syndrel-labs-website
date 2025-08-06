@@ -8,6 +8,16 @@
   border-bottom: 1px solid rgba(var(--foreground-rgb), 0.1);
   padding: 1rem 2rem;
   width: 100%;
+  transition: transform 0.3s ease;
+  transform: translateY(0);
+}
+
+.navbar.visible {
+  transform: translateY(0);
+}
+
+.navbar.hidden {
+  transform: translateY(-100%);
 }
 
 .container {

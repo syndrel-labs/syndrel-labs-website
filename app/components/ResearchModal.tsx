@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import BaseModal from './BaseModal';
 import styles from './ResearchModal.module.css';
 
 interface ResearchFocus {
@@ -18,91 +18,10 @@ interface ResearchModalProps {
 }
 
 const ResearchModal = ({ isOpen, onClose, focus }: ResearchModalProps) => {
-  const modalRef = useRef<HTMLDivElement>(null);
-  const previouslyFocused = useRef<HTMLElement | null>(null);
-
-  // Focus trap utility function
-  const trapFocus = (e: KeyboardEvent) => {
-    const focusableElements = modalRef.current?.querySelectorAll(
-      'a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])'
-    );
-
-    if (!focusableElements || focusableElements.length === 0) return;
-
-    const focusables = Array.from(focusableElements) as HTMLElement[];
-    const first = focusables[0];
-    const last = focusables[focusables.length - 1];
-
-    if (e.shiftKey && document.activeElement === first) {
-      e.preventDefault();
-      last.focus();
-    } else if (!e.shiftKey && document.activeElement === last) {
-      e.preventDefault();
-      first.focus();
-    }
-  };
-
-  // Keyboard event handler and scroll locking
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        onClose();
-      }
-
-      if (e.key === 'Tab') {
-        trapFocus(e);
-      }
-    };
-
-    if (isOpen) {
-      document.addEventListener('keydown', handleKeyDown);
-      // Prevent body scrolling
-      document.body.style.overflow = 'hidden';
-    }
-
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-      // Restore body scrolling
-      document.body.style.overflow = '';
-    };
-  }, [isOpen, onClose]);
-
-  // Store previously focused element and auto-focus first focusable element
-  useEffect(() => {
-    if (isOpen) {
-      // Store the currently focused element before opening modal
-      previouslyFocused.current = document.activeElement as HTMLElement;
-
-      // Auto-focus the first focusable element in the modal
-      const focusableElements = modalRef.current?.querySelectorAll(
-        'a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])'
-      );
-      const first = focusableElements?.[0] as HTMLElement;
-      first?.focus();
-    } else {
-      // Restore focus when modal closes
-      previouslyFocused.current?.focus();
-    }
-  }, [isOpen]);
-
   if (!isOpen || !focus) return null;
 
   return (
-    <div
-      className={styles.overlay}
-      onClick={onClose}
-      role="presentation"
-      aria-hidden="true"
-    >
-      <div
-        ref={modalRef}
-        className={styles.modal}
-        onClick={(e) => e.stopPropagation()}
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="modal-title"
-        aria-describedby="modal-description"
-      >
+    <BaseModal isOpen={isOpen} onClose={onClose} labelledById="modal-title" describedById="modal-description" contentClassName={styles.modal}>
         {/* Header */}
         <div className={styles.header}>
           <div className={styles.headerContent}>
@@ -144,7 +63,7 @@ const ResearchModal = ({ isOpen, onClose, focus }: ResearchModalProps) => {
 
           {/* Significance Section */}
           <section className={styles.section}>
-            <h2 className={styles.sectionTitle}>Significance to Syndrel</h2>
+            <h2 className={styles.sectionTitle}>Why We Use It</h2>
             <div className={styles.contentBlock}>
               <p className={styles.significanceText}>{focus.significance}</p>
             </div>
@@ -167,8 +86,7 @@ const ResearchModal = ({ isOpen, onClose, focus }: ResearchModalProps) => {
 
 
         </div>
-      </div>
-    </div>
+    </BaseModal>
   );
 };
 

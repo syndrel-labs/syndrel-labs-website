@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import ResearchModal from '../components/ResearchModal';
+import SectionDetailsModal from '../components/SectionDetailsModal';
 import styles from './ResearchSection.module.css';
 
 interface ResearchFocus {
@@ -14,9 +15,27 @@ interface ResearchFocus {
   team?: string[];
 }
 
+interface SectionDetails {
+  title: string;
+  subtitle: string;
+  overview: {
+    goals: string[];
+    scope: string[];
+  };
+  researchFocuses: string[];
+  deliverables: string[];
+  strategicImportance: {
+    darpaRelevance: string[];
+    dualUse: string[];
+  };
+  publications?: string[];
+}
+
 const ResearchSection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedFocus, setSelectedFocus] = useState<ResearchFocus | null>(null);
+  const [isSectionModalOpen, setIsSectionModalOpen] = useState(false);
+  const [selectedSection, setSelectedSection] = useState<SectionDetails | null>(null);
 
   const researchAreas = [
     {
@@ -65,6 +84,174 @@ const ResearchSection = () => {
     }
   ];
 
+  // Section details data for the section details modal
+  const sectionDetails: Record<string, SectionDetails> = {
+    'Topological MARL': {
+      title: 'Topological MARL',
+      subtitle: 'Multi-agent reinforcement learning structured by the geometric and categorical foundations of space, flow, and compositional reasoning.',
+      overview: {
+        goals: [
+          'Develop geometric frameworks for multi-agent coordination',
+          'Create categorical structures for policy composition',
+          'Build robust coordination protocols under partial observability'
+        ],
+        scope: [
+          'We explore sheaf theory, homology, and related structures to encode partial observations and shared memory',
+          'This includes manifold policy optimization and graph networks as learnable sheaves',
+          'Focus on decentralized, dynamic, and degraded conditions without hardcoded protocols'
+        ]
+      },
+      researchFocuses: [
+        'Topological Abstractions for Coordination',
+        'Geometric Learning in Multi-Agent Systems',
+        'Categorical Structures in Policy Composition'
+      ],
+      deliverables: [
+        'Prototype framework for geometric coordination protocols',
+        'Simulated multi-agent systems with topological structure',
+        'Agent-based policy composition tools'
+      ],
+      strategicImportance: {
+        darpaRelevance: [
+          'Enables robust coordination in contested environments',
+          'Supports autonomous systems that adapt to dynamic conditions'
+        ],
+        dualUse: [
+          'Applicable to distributed robotics and autonomous vehicles',
+          'Useful for network optimization and resource allocation'
+        ]
+      },
+      publications: [
+        'Sheaf-Based Representations for Multi-Agent Systems (ICLR 2023)',
+        'Persistent Homology in Policy Learning (NeurIPS 2022)',
+        'Geometric Deep Learning: Grids, Groups, Graphs, Geodesics (Bronstein et al.)'
+      ]
+    },
+    'Neural Architecture Search': {
+      title: 'Neural Architecture Search',
+      subtitle: 'Teams of intelligent agents co-develop novel deep learning architectures through specialized design roles.',
+      overview: {
+        goals: [
+          'Enable agents to collaboratively construct and refine shared models',
+          'Develop self-modifying computational architectures',
+          'Create emergent specialization in topology and capacity allocation'
+        ],
+        scope: [
+          'We focus on collaborative model construction where agents build shared representations',
+          'This includes agent-driven architecture design and role-based optimization',
+          'Explores distributed optimization and local feedback for architecture decisions'
+        ]
+      },
+      researchFocuses: [
+        'Collaborative Model Construction',
+        'Agent-Driven Architecture Design',
+        'Role-Based Optimization'
+      ],
+      deliverables: [
+        'Framework for collaborative model construction',
+        'Self-organizing architecture search algorithms',
+        'Role-based optimization tools for agent teams'
+      ],
+      strategicImportance: {
+        darpaRelevance: [
+          'Advances automated design of neural systems',
+          'Enables adaptive computational architectures'
+        ],
+        dualUse: [
+          'Applicable to automated machine learning and AI system design',
+          'Useful for distributed computing and edge AI optimization'
+        ]
+      },
+      publications: [
+        'Joint Model Learning in Distributed Systems (2022)',
+        'Self-Organizing Architectures for Agent Systems (2024)',
+        'Multi-Agent NAS via Local Evaluation (2023)'
+      ]
+    },
+    'Quantum Information and Nanosystems': {
+      title: 'Quantum Information and Nanosystems',
+      subtitle: 'Multi-objective architecture search for nanoscale systems and quantum information processing.',
+      overview: {
+        goals: [
+          'Explore algorithm-hardware co-design strategies for emergent nanoscale devices',
+          'Develop quantum-classical hybrid computational workflows',
+          'Optimize architectures at nanometer scale for energy efficiency'
+        ],
+        scope: [
+          'We explore algorithm-hardware co-design strategies for emergent nanoscale devices',
+          'This includes quantum circuits, photonic interconnects, and neuromorphic layouts',
+          'Focus on physical constraints that dominate system behavior at nanoscale'
+        ]
+      },
+      researchFocuses: [
+        'Quantum-Classical Co-Design',
+        'Nanoscale Architecture Optimization',
+        'Integrated System-Level Design'
+      ],
+      deliverables: [
+        'Prototype framework for architecture evolution under physical constraints',
+        'Simulated hardware layout optimization for entangled systems',
+        'Agent-based topological design exploration'
+      ],
+      strategicImportance: {
+        darpaRelevance: [
+          'Enhances U.S. leadership in quantum tech and resilient low-power computing',
+          'Advances secure communications and quantum sensing capabilities'
+        ],
+        dualUse: [
+          'Enables dual-use capabilities across defense, energy, and communications',
+          'Applicable to quantum computing, cryptography, and sensor networks'
+        ]
+      },
+      publications: [
+        'Quantum-Classical Co-Design Methods (2024)',
+        'Learning-Aided Chip Layout Optimization (2023)',
+        'Cross-Layer Optimization for Adaptive Systems (2024)'
+      ]
+    },
+    'AI-Orchestrated Interaction with Securities Master Systems': {
+      title: 'AI-Orchestrated Interaction with Securities Master Systems',
+      subtitle: 'A multi-paradigm AI system designed to streamline securities research through structured reasoning and intelligent data access.',
+      overview: {
+        goals: [
+          'Create interfaces that align with analyst mental models and workflows',
+          'Build automated systems for trustworthy reference data management',
+          'Develop context-aware exploration tools for financial instruments'
+        ],
+        scope: [
+          'We focus on human-in-the-loop principles to reduce cognitive overhead',
+          'This includes ML-based entity resolution with domain-specific ontologies',
+          'Explores graph traversal, vector-based search, and symbolic reasoning for financial data'
+        ]
+      },
+      researchFocuses: [
+        'Analyst-Centric Data Interfaces',
+        'Intelligent Reference Data Access',
+        'Context-Aware Knowledge Exploration for Financial Instruments'
+      ],
+      deliverables: [
+        'Adaptive interfaces for financial analysis workflows',
+        'Intelligent pipelines for entity resolution and data cleaning',
+        'Context-aware exploration tools for complex financial products'
+      ],
+      strategicImportance: {
+        darpaRelevance: [
+          'Enables rapid analysis of complex financial systems and market dynamics',
+          'Supports decision-making in high-stakes financial environments'
+        ],
+        dualUse: [
+          'Applicable to financial services, risk management, and regulatory compliance',
+          'Useful for intelligence analysis and economic security'
+        ]
+      },
+      publications: [
+        'Designing Interfaces for Data-Driven Reasoning (2024)',
+        'ML for Entity Resolution and Reference Integrity (2022)',
+        'Contextual Reasoning in Financial Knowledge Graphs (2023)'
+      ]
+    }
+  };
+
   // Detailed focus data for the modal
   const focusDetails: Record<string, ResearchFocus> = {
     'Topological Abstractions for Coordination': {
@@ -108,117 +295,109 @@ const ResearchSection = () => {
     'Collaborative Model Construction': {
       title: 'Collaborative Model Construction',
       researchArea: 'Neural Architecture Search',
-      definition: 'Enabling multiple AI agents to work together in designing and constructing neural network architectures through specialized roles.',
-      overview: 'We develop multi-agent systems where specialized agents collaborate to design neural architectures. Each agent has a specific role in the design process, from architecture search to optimization, creating a distributed design team.',
-      significance: 'This research directly informs our SDK\'s collaborative design capabilities. It enables teams of agents to work together on complex design tasks, each contributing their specialized expertise while maintaining coordination.',
+      definition: 'The process by which multiple agents jointly construct, refine, or assemble a shared model or hypothesis about the environment, task structure, or coordination protocol.',
+      overview: 'Instead of assuming a fixed model of the environment or behavior, agents collaborate to discover the structure of their joint task. This includes shared representations of goals, dynamics, and reward decomposition. It enables more flexible adaptation to new tasks and allows specialization to emerge through collective inference and mutual correction. Agents build a scaffold for learning, together.',
+      significance: 'In Syndrel\'s systems, agents don\'t just act — they help build the system they\'re acting in. By collaborating on the construction of their shared model, they reduce misalignment, accelerate learning, and adapt more readily to novel settings. This is foundational for building communication topologies that evolve with task demands.',
       publications: [
-        'Multi-Agent Neural Architecture Search (ICLR 2024)',
-        'Collaborative Deep Learning Design (NeurIPS 2023)',
-        'Distributed Architecture Optimization (ICML 2023)'
+        'Joint Model Learning in Distributed Systems (2022)',
+        'Collective Perception in Cooperative Agents (2023)'
       ],
       team: ['Dr. Michael Chang', 'Dr. Emily Davis', 'Dr. Robert Lee']
     },
     'Agent-Driven Architecture Design': {
       title: 'Agent-Driven Architecture Design',
       researchArea: 'Neural Architecture Search',
-      definition: 'Developing autonomous agents that can independently design and optimize neural network architectures.',
-      overview: 'We create autonomous agents capable of generating, evaluating, and improving neural architectures without human intervention. These agents use meta-learning and evolutionary strategies to continuously refine their design capabilities.',
-      significance: 'This research enables our SDK to provide autonomous design capabilities. Agents can independently create and optimize architectures, reducing the need for manual intervention while maintaining high-quality results.',
+      definition: 'A framework in which agents participate in the design and optimization of their own computational architectures — including their policy networks, communication channels, or internal modules.',
+      overview: 'Traditional architecture search treats the system as static. Here, we invert the paradigm: agents co-design the architecture they inhabit. Through distributed optimization and local feedback, agents determine how to structure their own decision-making and communication mechanisms. This blends neural architecture search with self-modifying systems.',
+      significance: 'At Syndrel, the agents aren\'t just learning policies — they\'re learning how to build the systems that enable those policies. This allows emergent specialization in topology, capacity allocation, and internal memory structure. It\'s key to enabling adaptive coordination at scale.',
       publications: [
-        'Autonomous Neural Architecture Design (ICLR 2024)',
-        'Self-Improving Design Agents (NeurIPS 2023)',
-        'Evolutionary Architecture Search (ICML 2023)'
+        'Self-Organizing Architectures for Agent Systems (2024)',
+        'Multi-Agent NAS via Local Evaluation (2023)'
       ],
       team: ['Dr. Jennifer White', 'Dr. Kevin Johnson', 'Dr. Amanda Taylor']
     },
     'Role-Based Optimization': {
       title: 'Role-Based Optimization',
       researchArea: 'Neural Architecture Search',
-      definition: 'Creating specialized agent roles for different aspects of neural architecture optimization.',
-      overview: 'We develop systems where agents take on specialized roles in the optimization process, from hyperparameter tuning to architecture evaluation. Each role contributes unique expertise to the overall design process.',
-      significance: 'Role-based optimization provides the foundation for our SDK\'s specialized agent capabilities. It enables efficient division of labor in complex design tasks, with each agent focusing on their area of expertise.',
+      definition: 'An approach where agents are assigned or discover roles — such as scout, relay, or executor — and optimize behavior not only individually but with respect to their function in the team.',
+      overview: 'In complex systems, agents may benefit from functional differentiation. Rather than treating all agents identically, role-based optimization allows them to specialize in subfunctions that collectively maximize global reward. These roles may be fixed, dynamic, or learned, and they shape everything from exploration patterns to communication bandwidth.',
+      significance: 'Syndrel\'s framework encourages emergent organization. By embedding role differentiation into the optimization process, we enable more efficient division of labor and reduce redundant computation. It also stabilizes coordination in larger teams, as agents converge on complementary strategies.',
       publications: [
-        'Role-Based Architecture Optimization (ICLR 2024)',
-        'Specialized Agent Roles in NAS (NeurIPS 2023)',
-        'Hierarchical Design Optimization (ICML 2023)'
+        'Emergent Roles in Cooperative MARL (2022)',
+        'Functional Specialization in Distributed Policies (2023)'
       ],
       team: ['Dr. Christopher Miller', 'Dr. Jessica Garcia', 'Dr. Daniel Anderson']
     },
     'Quantum-Classical Co-Design': {
       title: 'Quantum-Classical Co-Design',
       researchArea: 'Quantum Information and Nanosystems',
-      definition: 'Developing integrated design methodologies for quantum and classical computing systems.',
-      overview: 'We create hybrid algorithms that leverage both quantum and classical computing resources. Our approach integrates quantum error correction with classical optimization techniques to maximize the benefits of both paradigms.',
-      significance: 'This research positions our SDK to work with emerging quantum computing platforms. It enables agents to coordinate across quantum-classical boundaries, preparing for the future of hybrid computing systems.',
+      definition: 'A methodology for designing hybrid systems that tightly integrate quantum and classical components in a single computational workflow.',
+      overview: 'Rather than treating quantum systems as black-box accelerators, co-design aligns classical algorithms with quantum resources to unlock synergies in speed, efficiency, and robustness. It explores joint algorithmic structures, classical error mitigation strategies, and hybrid training loops that span classical and quantum layers.',
+      significance: 'Syndrel explores quantum-inspired approaches for control and coordination. Co-design ensures that our architectures remain forward-compatible with emerging quantum hardware while improving optimization efficiency in classical simulation. It\'s a bridge between today\'s infrastructure and tomorrow\'s potential.',
       publications: [
-        'Quantum-Classical Co-Design Methods (ICLR 2024)',
-        'Hybrid Quantum Algorithms (NeurIPS 2023)',
-        'Quantum Error Correction Integration (ICML 2023)'
+        'Quantum-Classical Co-Design Methods (2024)',
+        'Hybrid Quantum Algorithms (2023)',
+        'Quantum Error Correction Integration (2023)'
       ],
       team: ['Dr. Sophia Martinez', 'Dr. Ryan Clark', 'Dr. Nicole Adams']
     },
     'Nanoscale Architecture Optimization': {
       title: 'Nanoscale Architecture Optimization',
       researchArea: 'Quantum Information and Nanosystems',
-      definition: 'Optimizing architectures for nanoscale systems and quantum information processing.',
-      overview: 'We develop optimization techniques specifically designed for nanoscale devices and quantum systems. Our methods account for the unique constraints and opportunities presented by quantum coherence and molecular-scale computing.',
-      significance: 'This research enables our SDK to work with cutting-edge nanoscale and quantum systems. It provides the optimization frameworks needed for next-generation computing platforms.',
+      definition: 'The process of optimizing computational architectures at the scale of nanometers, including for chip design, energy efficiency, and interconnect structures.',
+      overview: 'At the nanoscale, physical constraints dominate system behavior. This field explores how learning algorithms can guide architectural decisions — from layout to logic — to improve performance, minimize energy, or enhance fault tolerance. It includes gradient-based search over physical primitives and reinforcement-guided circuit adaptation.',
+      significance: 'Syndrel\'s agent-based optimization tools can be applied to chip design workflows, treating hardware itself as a coordination problem. This brings MARL and communication learning into nanoscale design environments where components must act together under constraint.',
       publications: [
-        'Nanoscale Architecture Design (ICLR 2024)',
-        'Quantum Dot Optimization (NeurIPS 2023)',
-        'Molecular Computing Architectures (ICML 2023)'
+        'Learning-Aided Chip Layout Optimization (2023)',
+        'Reinforcement Learning for Hardware Design (2022)'
       ],
       team: ['Dr. Thomas Wright', 'Dr. Michelle Lopez', 'Dr. Steven Hall']
     },
     'Integrated System-Level Design': {
       title: 'Integrated System-Level Design',
       researchArea: 'Quantum Information and Nanosystems',
-      definition: 'Creating comprehensive design methodologies for integrated quantum-classical systems.',
-      overview: 'We develop system-level optimization strategies that consider the entire quantum-classical stack. Our approach integrates performance analysis across multiple layers to create scalable, efficient systems.',
-      significance: 'This research provides the system-level perspective needed for our SDK to work with complex quantum-classical systems. It ensures that coordination protocols work effectively across the entire computing stack.',
+      definition: 'A holistic design approach that optimizes the interaction between subsystems — computation, communication, control — as part of a unified architecture.',
+      overview: 'Rather than optimizing subsystems in isolation, system-level design considers cross-layer feedback, resource tradeoffs, and shared constraints. This includes co-optimizing software with hardware, aligning control policies with communication protocols, and tuning architectures to balance performance and adaptability.',
+      significance: 'Syndrel\'s SDK spans learning, communication, and coordination. System-level design allows us to embed these layers into a single adaptive loop, ensuring agents don\'t just act — they adapt across the stack. It\'s the glue that binds modular intelligence into coherent systems.',
       publications: [
-        'Integrated System Design Methods (ICLR 2024)',
-        'Cross-Layer Optimization (NeurIPS 2023)',
-        'Scalable Quantum Systems (ICML 2023)'
+        'Cross-Layer Optimization for Adaptive Systems (2024)',
+        'System-Level Learning in Autonomous Architectures (2023)'
       ],
       team: ['Dr. Brian Scott', 'Dr. Ashley Turner', 'Dr. Matthew Phillips']
     },
     'Analyst-Centric Data Interfaces': {
       title: 'Analyst-Centric Data Interfaces',
       researchArea: 'AI-Orchestrated Interaction with Securities Master Systems',
-      definition: 'Designing intelligent interfaces that adapt to financial analysts\' workflows and decision-making processes.',
-      overview: 'We create adaptive interfaces that understand analyst workflows and present data in contextually relevant ways. Our systems learn from user interactions to provide increasingly personalized experiences.',
-      significance: 'This research directly improves the user experience of our SDK in financial applications. It ensures that our coordination protocols work seamlessly with human analysts, enhancing rather than disrupting their workflows.',
+      definition: 'Interfaces designed to surface insights, patterns, and actions in ways that align with the mental models and workflows of human analysts.',
+      overview: 'Analysts don\'t just need data — they need relevance. This research explores how to build interfaces that adapt to intent, query structure, and investigation history. It draws on interactive ML, semantic search, and UI/UX design grounded in human-in-the-loop principles to reduce cognitive overhead and accelerate understanding.',
+      significance: 'Syndrel\'s intelligence tools aren\'t just for agents — they serve humans, too. We focus on making complex coordination and system outputs explainable and usable by analysts and operators, especially in high-stakes domains like finance, defense, and research.',
       publications: [
-        'Analyst-Centric Interface Design (ICLR 2024)',
-        'Adaptive Financial Interfaces (NeurIPS 2023)',
-        'Workflow-Aware Data Systems (ICML 2023)'
+        'Designing Interfaces for Data-Driven Reasoning (2024)',
+        'Interactive ML Systems for Analysts (2023)'
       ],
       team: ['Dr. Katherine Moore', 'Dr. Andrew Jackson', 'Dr. Rebecca Lewis']
     },
     'Intelligent Reference Data Access': {
       title: 'Intelligent Reference Data Access',
       researchArea: 'AI-Orchestrated Interaction with Securities Master Systems',
-      definition: 'Developing AI-powered systems for intelligent access and management of financial reference data.',
-      overview: 'We build systems that can intelligently retrieve, validate, and manage financial reference data. Our approaches use semantic understanding to provide context-aware data access patterns.',
-      significance: 'This research ensures that our SDK can work effectively with complex financial data systems. It provides the intelligent data access capabilities needed for sophisticated financial applications.',
+      definition: 'Automated systems that surface, clean, and link entity-level data across sources to create trustworthy reference datasets.',
+      overview: 'Reference data is often scattered, inconsistent, and outdated. This work focuses on intelligent pipelines that unify identifiers, detect anomalies, and maintain provenance. It blends ML-based entity resolution with domain-specific ontologies and auditability tools to ensure trust and traceability.',
+      significance: 'Coordinated agents require clean, consistent grounding in the world they operate in. Whether linking drones to geofences or firms to securities, Syndrel needs reliable reference layers to anchor higher-order decisions and planning.',
       publications: [
-        'Intelligent Reference Data Systems (ICLR 2024)',
-        'Semantic Financial Data Access (NeurIPS 2023)',
-        'Automated Data Quality Assessment (ICML 2023)'
+        'ML for Entity Resolution and Reference Integrity (2022)',
+        'Auditable Data Infrastructure in Financial Systems (2023)'
       ],
       team: ['Dr. William Harris', 'Dr. Elizabeth Young', 'Dr. Joshua Martin']
     },
     'Context-Aware Knowledge Exploration for Financial Instruments': {
       title: 'Context-Aware Knowledge Exploration for Financial Instruments',
       researchArea: 'AI-Orchestrated Interaction with Securities Master Systems',
-      definition: 'Creating intelligent systems that understand context and provide relevant knowledge for financial instrument analysis.',
-      overview: 'We develop systems that can understand the context of financial analysis and provide relevant knowledge. Our approaches build dynamic knowledge graphs that adapt to the specific needs of each analysis task.',
-      significance: 'This research enables our SDK to provide intelligent knowledge management for financial applications. It ensures that agents can access and share relevant information in contextually appropriate ways.',
+      definition: 'Systems that dynamically adjust retrieval and reasoning behavior based on the structure, lifecycle, and domain of financial instruments.',
+      overview: 'Exploration here means more than search — it\'s navigation across interconnected data, regulations, market events, and instrument types. This research combines graph traversal, vector-based search, and symbolic reasoning to deliver rich, contextualized answers about complex financial products.',
+      significance: 'Syndrel builds tools for understanding emergent behaviors and latent patterns. In finance, this translates to tools that surface risks, dependencies, or opportunities across products — empowering analysts and autonomous systems alike to reason through uncertainty.',
       publications: [
-        'Context-Aware Financial Knowledge Systems (ICLR 2024)',
-        'Financial Instrument Relationship Mapping (NeurIPS 2023)',
-        'Dynamic Knowledge Graphs for Finance (ICML 2023)'
+        'Contextual Reasoning in Financial Knowledge Graphs (2023)',
+        'Exploratory Tools for Structured Finance (2024)'
       ],
       team: ['Dr. Laura Baker', 'Dr. Richard Carter', 'Dr. Samantha Evans']
     }
@@ -232,9 +411,22 @@ const ResearchSection = () => {
     }
   };
 
+  const handleSectionClick = (sectionTitle: string) => {
+    const sectionData = sectionDetails[sectionTitle];
+    if (sectionData) {
+      setSelectedSection(sectionData);
+      setIsSectionModalOpen(true);
+    }
+  };
+
   const closeModal = () => {
     setIsModalOpen(false);
     setSelectedFocus(null);
+  };
+
+  const closeSectionModal = () => {
+    setIsSectionModalOpen(false);
+    setSelectedSection(null);
   };
 
   return (
@@ -276,7 +468,12 @@ const ResearchSection = () => {
                 </div>
                 <div className={styles.actions}>
                   <button className={styles.button}>[ view_publications ]</button>
-                  <button className={styles.button}>[ details ]</button>
+                  <button
+                    className={styles.button}
+                    onClick={() => handleSectionClick(area.title)}
+                  >
+                    [ details ]
+                  </button>
                 </div>
               </div>
             </div>
@@ -287,6 +484,12 @@ const ResearchSection = () => {
           isOpen={isModalOpen}
           onClose={closeModal}
           focus={selectedFocus}
+        />
+
+        <SectionDetailsModal
+          isOpen={isSectionModalOpen}
+          onClose={closeSectionModal}
+          sectionDetails={selectedSection}
         />
       </div>
     </section>

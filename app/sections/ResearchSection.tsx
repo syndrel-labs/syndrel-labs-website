@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import PublicationsModal from '../components/PublicationsModal';
 import ResearchModal from '../components/ResearchModal';
 import SectionDetailsModal from '../components/SectionDetailsModal';
 import styles from './ResearchSection.module.css';
@@ -31,11 +32,22 @@ interface SectionDetails {
   publications?: string[];
 }
 
+interface ResearchArea {
+  id: number;
+  title: string;
+  description: string;
+  focus: string[];
+  publications: number;
+  status: string;
+}
+
 const ResearchSection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedFocus, setSelectedFocus] = useState<ResearchFocus | null>(null);
   const [isSectionModalOpen, setIsSectionModalOpen] = useState(false);
   const [selectedSection, setSelectedSection] = useState<SectionDetails | null>(null);
+  const [isPublicationsModalOpen, setIsPublicationsModalOpen] = useState(false);
+  const [selectedResearchArea, setSelectedResearchArea] = useState<ResearchArea | null>(null);
 
   const researchAreas = [
     {
@@ -258,11 +270,20 @@ const ResearchSection = () => {
       title: 'Topological Abstractions for Coordination',
       researchArea: 'Topological MARL',
       definition: 'The use of algebraic topology to understand and guide how agents share and structure information in distributed environments.',
-      overview: 'We study the use of sheaf theory, homology, and related structures to encode partial observations, shared memory, and latent connectivity in multi-agent systems. By representing the environment as a structured topological space, agents can learn policies that are stable under deformation, robust to noise, and aware of global constraints that emerge from local interactions.',
-      significance: 'Topological methods help us build agents that coordinate despite partial observability and dynamic reconfiguration. These abstractions enable Syndrel\'s SDK to scale to decentralized, dynamic, and degraded conditions without requiring brittle, hardcoded protocols.',
+      overview: 'We study sheaf theory, homology, and related structures to encode partial observations, shared memory, and latent connectivity in multi-agent systems. By representing the environment as a structured topological space, agents can learn policies that are stable under deformation, robust to noise, and aware of global constraints that emerge from local interactions.',
+      significance: 'Topological methods enable agents to coordinate despite partial observability and dynamic reconfiguration. These abstractions allow Syndrel\'s SDK to scale to decentralized, dynamic, and degraded conditions without requiring brittle, hardcoded protocols.',
       publications: [
-        'Sheaf-Based Representations for Multi-Agent Systems (ICLR 2023)',
-        'Persistent Homology in Policy Learning (NeurIPS 2022)'
+        'HyperComm: Hypergraph-based communication in multi-agent reinforcement learning — Tianyu Zhu et al.',
+        'VAIN: Attentional Multi-agent Predictive Modeling — Yedid Hoshen',
+        'TarMAC: Targeted Multi-Agent Communication — Abhishek Das et al.',
+        'Learning Attentional Communication for Multi-Agent Cooperation (ATOC) — Jiechuan Jiang & Zongqing Lu',
+        'Learning when to communicate at scale in multiagent cooperative and competitive tasks (IC3Net) — Amanpreet Singh et al.',
+        'Learning to Schedule Communication in Multi-Agent Reinforcement Learning (SchedNet) — Soo-Hwan Kim et al.',
+        'Learning Structured Communication for Multi-Agent Reinforcement Learning — Junjie Sheng et al.',
+        'SIGMA: Sheaf-Informed Geometric Multi-Agent Pathfinding — Shuhua Liao et al.',
+        'Distributed Multi-agent Coordination over Cellular Sheaves — Tyler Hanks et al.',
+        'Sheaf theory: from deep geometry to deep learning — Anton Ayzenberg et al.',
+        'Applied Sheaf Theory for Multi-agent Artificial Intelligence (Reinforcement Learning) Systems: A Prospectus — Eric Schmid'
       ],
       team: ['Dr. Elias Wang', 'Dr. Marina Kohler']
     },
@@ -270,25 +291,31 @@ const ResearchSection = () => {
       title: 'Geometric Learning in Multi-Agent Systems',
       researchArea: 'Topological MARL',
       definition: 'Using geometry and topology to structure how agents learn, coordinate, and move in complex environments.',
-      overview: 'We represent agents, environments, and their interactions using manifolds, graphs, and fiber bundles. This lets us model locality, motion, and communication structure in a way that reflects the true shape of the task and environment.',
-      significance: 'Geometry gives structure to coordination. Our agents don\'t just learn what to do, but where, when, and how to interact — guided by the shape of the environment and team dynamics. It\'s essential for generalizing behavior across domains.',
+      overview: 'We represent agents, environments, and their interactions using manifolds, graphs, and fiber bundles. This approach models locality, motion, and communication structure in a way that reflects the true shape of the task and environment.',
+      significance: 'Geometry provides the framework for coordination. Our agents learn actions, timing, location, and interaction patterns shaped by the environment and their teammates. This structure allows behaviors to transfer and remain effective across different domains.',
       publications: [
-        'Geometric Deep Learning: Grids, Groups, Graphs, Geodesics (Bronstein et al.)',
-        'Manifold Policy Optimization (Huang et al.)',
-        'Graph Networks as Learnable Sheaves (Ebli et al.)'
+        'Self-Clustering Hierarchical Multi-Agent Reinforcement Learning with Extensible Cooperation Graph — Qingxu Fu et al.',
+        'Symmetries-enhanced Multi-Agent Reinforcement Learning — Nikolaos Bousias et al.',
+        'Multi-Agent Quantum Reinforcement Learning using Evolutionary Optimization — Michael Kölle et al.',
+        'Flow Matching on Lie Groups — Finn M. Sherry & Bart M. N. Smets',
+        'Introduction to Lie Groups and Lie Algebras — Alexander Kirillov Jr.',
+        'Symplectic geometric flows — Teng Fei & Duong H. Phong',
+        'nLab: symplectic gradient — nLab contributors',
+        'Deep Sets — Manzil Zaheer et al.',
+        'Math 127: Posets — Mary Radcliffe',
+        'Symmetric Dot-Product Attention for Efficient Training of BERT Language Models — Martin Courtois et al.'
       ],
       team: ['Dr. Alex Thompson', 'Dr. Maya Patel', 'Dr. James Wilson']
     },
     'Categorical Structures in Policy Composition': {
       title: 'Categorical Structures in Policy Composition',
       researchArea: 'Topological MARL',
-      definition: 'Using category theory to structure how agents compose and coordinate policies — turning individual decisions into modular, composable parts of a larger system.',
-      overview: 'Category theory gives us a way to model agent behaviors as composable elements, where policies are morphisms and agents are objects. This enables modular coordination, reusable strategies, and formal analysis of communication and control across teams.',
-      significance: 'This lets us build coordination systems that are interpretable and modular, rather than monolithic. We use categorical tools to define policy interfaces, communication protocols, and system-wide structure — foundational for scalable, generalizable multi-agent behavior.',
+      definition: 'Category theory formalizes how agents combine and coordinate their policies. By treating individual decisions as modular components, we can compose them into larger, coherent systems that preserve structure and remain adaptable.',
+      overview: 'Category theory models agent behaviors as composable elements, where policies are morphisms and agents are objects. This enables modular coordination, reusable strategies, and formal analysis of communication and control across teams.',
+      significance: 'This approach builds coordination systems that are interpretable and modular rather than monolithic. We use categorical tools to define policy interfaces, communication protocols, and system-wide structure, which is foundational for scalable, generalizable multi-agent behavior.',
       publications: [
-        'Compositional RL with Categories (Tavares et al.)',
-        'Sheaf-Theoretic Models for Coordination (Baez et al.)',
-        'Functorial Semantics of Learning Systems (Fong & Spivak)'
+        'Reinforcement Learning in Categorical Cybernetics — Jules Hedges & Riu Rodríguez Sakamoto',
+        'Sheaf Theory: From Deep Geometry to Deep Learning (blog) — Noeon Research'
       ],
       team: ['Dr. Rachel Green', 'Dr. David Brown', 'Dr. Lisa Wang']
     },
@@ -296,8 +323,8 @@ const ResearchSection = () => {
       title: 'Collaborative Model Construction',
       researchArea: 'Neural Architecture Search',
       definition: 'The process by which multiple agents jointly construct, refine, or assemble a shared model or hypothesis about the environment, task structure, or coordination protocol.',
-      overview: 'Instead of assuming a fixed model of the environment or behavior, agents collaborate to discover the structure of their joint task. This includes shared representations of goals, dynamics, and reward decomposition. It enables more flexible adaptation to new tasks and allows specialization to emerge through collective inference and mutual correction. Agents build a scaffold for learning, together.',
-      significance: 'In Syndrel\'s systems, agents don\'t just act — they help build the system they\'re acting in. By collaborating on the construction of their shared model, they reduce misalignment, accelerate learning, and adapt more readily to novel settings. This is foundational for building communication topologies that evolve with task demands.',
+      overview: 'Instead of assuming a fixed model of the environment or behavior, agents collaborate to discover the structure of their joint task. This includes shared representations of goals, dynamics, and reward decomposition. It enables more flexible adaptation to new tasks and allows specialization to emerge through collective inference and mutual correction.',
+      significance: 'In Syndrel\'s systems, agents contribute through their actions and by shaping the system they operate within. By jointly constructing a shared model, they limit misalignment, improve learning speed, and adapt more effectively to new environments. This approach underpins the development of communication topologies that evolve in response to changing task requirements.',
       publications: [
         'Joint Model Learning in Distributed Systems (2022)',
         'Collective Perception in Cooperative Agents (2023)'
@@ -307,9 +334,9 @@ const ResearchSection = () => {
     'Agent-Driven Architecture Design': {
       title: 'Agent-Driven Architecture Design',
       researchArea: 'Neural Architecture Search',
-      definition: 'A framework in which agents participate in the design and optimization of their own computational architectures — including their policy networks, communication channels, or internal modules.',
+      definition: 'A framework in which agents participate in the design and optimization of their own computational architectures, including their policy networks, communication channels, or internal modules.',
       overview: 'Traditional architecture search treats the system as static. Here, we invert the paradigm: agents co-design the architecture they inhabit. Through distributed optimization and local feedback, agents determine how to structure their own decision-making and communication mechanisms. This blends neural architecture search with self-modifying systems.',
-      significance: 'At Syndrel, the agents aren\'t just learning policies — they\'re learning how to build the systems that enable those policies. This allows emergent specialization in topology, capacity allocation, and internal memory structure. It\'s key to enabling adaptive coordination at scale.',
+      significance: 'At Syndrel, the agents learn policies and how to build the systems that enable those policies. This allows emergent specialization in topology, capacity allocation, and internal memory structure. It\'s key to enabling adaptive coordination at scale.',
       publications: [
         'Self-Organizing Architectures for Agent Systems (2024)',
         'Multi-Agent NAS via Local Evaluation (2023)'
@@ -319,7 +346,7 @@ const ResearchSection = () => {
     'Role-Based Optimization': {
       title: 'Role-Based Optimization',
       researchArea: 'Neural Architecture Search',
-      definition: 'An approach where agents are assigned or discover roles — such as scout, relay, or executor — and optimize behavior not only individually but with respect to their function in the team.',
+      definition: 'An approach where agents are assigned or discover roles such as scout, relay, or executor, and optimize behavior individually and with respect to their function in the team.',
       overview: 'In complex systems, agents may benefit from functional differentiation. Rather than treating all agents identically, role-based optimization allows them to specialize in subfunctions that collectively maximize global reward. These roles may be fixed, dynamic, or learned, and they shape everything from exploration patterns to communication bandwidth.',
       significance: 'Syndrel\'s framework encourages emergent organization. By embedding role differentiation into the optimization process, we enable more efficient division of labor and reduce redundant computation. It also stabilizes coordination in larger teams, as agents converge on complementary strategies.',
       publications: [
@@ -332,8 +359,8 @@ const ResearchSection = () => {
       title: 'Quantum-Classical Co-Design',
       researchArea: 'Quantum Information and Nanosystems',
       definition: 'A methodology for designing hybrid systems that tightly integrate quantum and classical components in a single computational workflow.',
-      overview: 'Rather than treating quantum systems as black-box accelerators, co-design aligns classical algorithms with quantum resources to unlock synergies in speed, efficiency, and robustness. It explores joint algorithmic structures, classical error mitigation strategies, and hybrid training loops that span classical and quantum layers.',
-      significance: 'Syndrel explores quantum-inspired approaches for control and coordination. Co-design ensures that our architectures remain forward-compatible with emerging quantum hardware while improving optimization efficiency in classical simulation. It\'s a bridge between today\'s infrastructure and tomorrow\'s potential.',
+      overview: 'Rather than treating quantum systems as black-box accelerators, co-design aligns classical algorithms with quantum resources to achieve synergies in speed, efficiency, and robustness. It explores joint algorithmic structures, classical error mitigation strategies, and hybrid training loops that span classical and quantum layers.',
+      significance: 'Syndrel explores quantum-inspired approaches for control and coordination. Co-design ensures that our architectures remain forward-compatible with emerging quantum hardware while improving optimization efficiency in classical simulation. It connects current infrastructure with future quantum capabilities.',
       publications: [
         'Quantum-Classical Co-Design Methods (2024)',
         'Hybrid Quantum Algorithms (2023)',
@@ -344,8 +371,8 @@ const ResearchSection = () => {
     'Nanoscale Architecture Optimization': {
       title: 'Nanoscale Architecture Optimization',
       researchArea: 'Quantum Information and Nanosystems',
-      definition: 'The process of optimizing computational architectures at the scale of nanometers, including for chip design, energy efficiency, and interconnect structures.',
-      overview: 'At the nanoscale, physical constraints dominate system behavior. This field explores how learning algorithms can guide architectural decisions — from layout to logic — to improve performance, minimize energy, or enhance fault tolerance. It includes gradient-based search over physical primitives and reinforcement-guided circuit adaptation.',
+      definition: 'The process of optimizing computational architectures at the scale of nanometers, including chip design, energy efficiency, and interconnect structures.',
+      overview: 'At the nanoscale, physical constraints dominate system behavior. This field explores how learning algorithms can guide architectural decisions from layout to logic to improve performance, minimize energy, or enhance fault tolerance. It includes gradient-based search over physical primitives and reinforcement-guided circuit adaptation.',
       significance: 'Syndrel\'s agent-based optimization tools can be applied to chip design workflows, treating hardware itself as a coordination problem. This brings MARL and communication learning into nanoscale design environments where components must act together under constraint.',
       publications: [
         'Learning-Aided Chip Layout Optimization (2023)',
@@ -356,9 +383,9 @@ const ResearchSection = () => {
     'Integrated System-Level Design': {
       title: 'Integrated System-Level Design',
       researchArea: 'Quantum Information and Nanosystems',
-      definition: 'A holistic design approach that optimizes the interaction between subsystems — computation, communication, control — as part of a unified architecture.',
+      definition: 'A holistic design approach that optimizes the interaction between subsystems computation, communication, and control as part of a unified architecture.',
       overview: 'Rather than optimizing subsystems in isolation, system-level design considers cross-layer feedback, resource tradeoffs, and shared constraints. This includes co-optimizing software with hardware, aligning control policies with communication protocols, and tuning architectures to balance performance and adaptability.',
-      significance: 'Syndrel\'s SDK spans learning, communication, and coordination. System-level design allows us to embed these layers into a single adaptive loop, ensuring agents don\'t just act — they adapt across the stack. It\'s the glue that binds modular intelligence into coherent systems.',
+      significance: 'Syndrel\'s SDK spans learning, communication, and coordination. System-level design allows us to embed these layers into a single adaptive loop, ensuring agents adapt across the stack. It\'s the foundation that binds modular intelligence into coherent systems.',
       publications: [
         'Cross-Layer Optimization for Adaptive Systems (2024)',
         'System-Level Learning in Autonomous Architectures (2023)'
@@ -369,8 +396,8 @@ const ResearchSection = () => {
       title: 'Analyst-Centric Data Interfaces',
       researchArea: 'AI-Orchestrated Interaction with Securities Master Systems',
       definition: 'Interfaces designed to surface insights, patterns, and actions in ways that align with the mental models and workflows of human analysts.',
-      overview: 'Analysts don\'t just need data — they need relevance. This research explores how to build interfaces that adapt to intent, query structure, and investigation history. It draws on interactive ML, semantic search, and UI/UX design grounded in human-in-the-loop principles to reduce cognitive overhead and accelerate understanding.',
-      significance: 'Syndrel\'s intelligence tools aren\'t just for agents — they serve humans, too. We focus on making complex coordination and system outputs explainable and usable by analysts and operators, especially in high-stakes domains like finance, defense, and research.',
+      overview: 'Analysts need relevance, not just data. This research explores how to build interfaces that adapt to intent, query structure, and investigation history. It draws on interactive ML, semantic search, and UI/UX design grounded in human-in-the-loop principles to reduce cognitive overhead and accelerate understanding.',
+      significance: 'Syndrel\'s intelligence tools serve both agents and humans. We focus on making complex coordination and system outputs explainable and usable by analysts and operators, especially in high-stakes domains like finance, defense, and research.',
       publications: [
         'Designing Interfaces for Data-Driven Reasoning (2024)',
         'Interactive ML Systems for Analysts (2023)'
@@ -393,8 +420,8 @@ const ResearchSection = () => {
       title: 'Context-Aware Knowledge Exploration for Financial Instruments',
       researchArea: 'AI-Orchestrated Interaction with Securities Master Systems',
       definition: 'Systems that dynamically adjust retrieval and reasoning behavior based on the structure, lifecycle, and domain of financial instruments.',
-      overview: 'Exploration here means more than search — it\'s navigation across interconnected data, regulations, market events, and instrument types. This research combines graph traversal, vector-based search, and symbolic reasoning to deliver rich, contextualized answers about complex financial products.',
-      significance: 'Syndrel builds tools for understanding emergent behaviors and latent patterns. In finance, this translates to tools that surface risks, dependencies, or opportunities across products — empowering analysts and autonomous systems alike to reason through uncertainty.',
+      overview: 'Exploration here means navigation across interconnected data, regulations, market events, and instrument types. This research combines graph traversal, vector-based search, and symbolic reasoning to deliver rich, contextualized answers about complex financial products.',
+      significance: 'Syndrel builds tools for understanding emergent behaviors and latent patterns. In finance, this translates to tools that surface risks, dependencies, or opportunities across products, empowering analysts and autonomous systems to reason through uncertainty.',
       publications: [
         'Contextual Reasoning in Financial Knowledge Graphs (2023)',
         'Exploratory Tools for Structured Finance (2024)'
@@ -419,6 +446,11 @@ const ResearchSection = () => {
     }
   };
 
+  const handlePublicationsClick = (researchArea: ResearchArea) => {
+    setSelectedResearchArea(researchArea);
+    setIsPublicationsModalOpen(true);
+  };
+
   const closeModal = () => {
     setIsModalOpen(false);
     setSelectedFocus(null);
@@ -427,6 +459,11 @@ const ResearchSection = () => {
   const closeSectionModal = () => {
     setIsSectionModalOpen(false);
     setSelectedSection(null);
+  };
+
+  const closePublicationsModal = () => {
+    setIsPublicationsModalOpen(false);
+    setSelectedResearchArea(null);
   };
 
   return (
@@ -467,7 +504,12 @@ const ResearchSection = () => {
                   </div>
                 </div>
                 <div className={styles.actions}>
-                  <button className={styles.button}>[ view_publications ]</button>
+                  <button
+                    className={styles.button}
+                    onClick={() => handlePublicationsClick(area)}
+                  >
+                    [ foundations ]
+                  </button>
                   <button
                     className={styles.button}
                     onClick={() => handleSectionClick(area.title)}
@@ -490,6 +532,13 @@ const ResearchSection = () => {
           isOpen={isSectionModalOpen}
           onClose={closeSectionModal}
           sectionDetails={selectedSection}
+        />
+
+        <PublicationsModal
+          isOpen={isPublicationsModalOpen}
+          onClose={closePublicationsModal}
+          researchArea={selectedResearchArea}
+          focusDetails={focusDetails}
         />
       </div>
     </section>

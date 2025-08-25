@@ -105,7 +105,7 @@ export default function SectionDetailsModal({ isOpen, onClose, sectionDetails }:
             <h3 className={styles.sectionTitle}>Strategic Importance</h3>
             <div className={styles.strategicContent}>
               <div className={styles.darpaRelevance}>
-                <h4>• Why DARPA cares</h4>
+                <h4>Industry Importance</h4>
                 <ul>
                   {sectionDetails.strategicImportance.darpaRelevance.map((item, index) => (
                     <li key={index}>{item}</li>
@@ -113,7 +113,7 @@ export default function SectionDetailsModal({ isOpen, onClose, sectionDetails }:
                 </ul>
               </div>
               <div className={styles.dualUse}>
-                <h4>• Dual-use relevance</h4>
+                <h4>Dual-use relevance</h4>
                 <ul>
                   {sectionDetails.strategicImportance.dualUse.map((item, index) => (
                     <li key={index}>{item}</li>
@@ -127,7 +127,7 @@ export default function SectionDetailsModal({ isOpen, onClose, sectionDetails }:
         <div className={styles.footer}>
           {sectionDetails.publications && sectionDetails.publications.length > 0 && (
             <button className={styles.publicationsButton}>
-              [ view_publications ]
+              [ foundations ]
             </button>
           )}
           <button className={styles.closeButton} onClick={onClose}>

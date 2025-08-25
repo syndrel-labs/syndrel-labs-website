@@ -68,23 +68,6 @@ const ResearchModal = ({ isOpen, onClose, focus }: ResearchModalProps) => {
               <p className={styles.significanceText}>{focus.significance}</p>
             </div>
           </section>
-
-          {/* Publications Section */}
-          {focus.publications && focus.publications.length > 0 && (
-            <section className={styles.section}>
-              <h2 className={styles.sectionTitle}>Publications</h2>
-              <div className={styles.publicationsList}>
-                {focus.publications.map((pub, index) => (
-                  <div key={index} className={styles.publicationItem}>
-                    <span className={styles.pubNumber}>[{index + 1}]</span>
-                    <span className={styles.pubText}>{pub}</span>
-                  </div>
-                ))}
-              </div>
-            </section>
-          )}
-
-
         </div>
     </BaseModal>
   );

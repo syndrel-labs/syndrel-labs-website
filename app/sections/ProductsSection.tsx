@@ -3,7 +3,7 @@ import styles from './ProductsSection.module.css';
 const products = [
   {
     id: 1,
-    name: 'syndrel_lattice',
+    name: 'syndrel_obi',
     description:
       'Coordination and consensus protocol for distributed multi-agent systems.',
     category: 'Coordination',

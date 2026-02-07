@@ -1,65 +1,65 @@
 'use client';
 
-// import { OrbitControls } from '@react-three/drei';
-// import { Canvas, useFrame } from '@react-three/fiber';
-// import React, { useRef } from 'react';
-// import * as THREE from 'three';
+import { OrbitControls } from '@react-three/drei';
+import { Canvas, useFrame } from '@react-three/fiber';
+import React, { useRef } from 'react';
+import * as THREE from 'three';
 
-// function TopologicalGrid(): React.JSX.Element {
-//   const meshRef = useRef<THREE.Points>(null)
-//   const count = 400 // Much larger grid for infinite effect
-//   const sep = 0.35 // Smaller separation for denser grid
-//   const grid: [number, number, number][] = []
-//
-//   for (let xi = 0; xi < count; xi++) {
-//     for (let zi = 0; zi < count; zi++) {
-//       const x = sep * (xi - count / 2)
-//       const z = sep * (zi - count / 2)
-//       grid.push([x, 0, z])
-//     }
-//   }
-//
-//   const positions = new Float32Array(grid.length * 3)
-//   grid.forEach((p, i) => {
-//     positions[i * 3] = p[0]
-//     positions[i * 3 + 1] = p[1]
-//     positions[i * 3 + 2] = p[2]
-//   })
-//
-//   useFrame(({ clock }) => {
-//     const t = clock.getElapsedTime()
-//     const mesh = meshRef.current
-//     if (!mesh) return
-//
-//     const pos = mesh.geometry.attributes.position as THREE.BufferAttribute
-//     for (let i = 0; i < pos.count; i++) {
-//       const x = pos.getX(i)
-//       const z = pos.getZ(i)
-//       const y = 0.3 * Math.sin(0.4 * x + t) * Math.cos(0.4 * z + t) + 0.5
-//       pos.setY(i, y)
-//     }
-//     pos.needsUpdate = true
-//   })
-//
-//   return (
-//     <points ref={meshRef}>
-//       <bufferGeometry attach="geometry">
-//         <bufferAttribute
-//           attach="attributes-position"
-//           args={[positions, 3]}
-//         />
-//       </bufferGeometry>
-//       <pointsMaterial
-//         attach="material"
-//         color="#00ff00"
-//         size={0.1}
-//         sizeAttenuation={false}
-//         transparent
-//         opacity={1.0}
-//       />
-//     </points>
-//   )
-// }
+function TopologicalGrid(): React.JSX.Element {
+  const meshRef = useRef<THREE.Points>(null)
+  const count = 400 // Much larger grid for infinite effect
+  const sep = 0.35 // Smaller separation for denser grid
+  const grid: [number, number, number][] = []
+
+  for (let xi = 0; xi < count; xi++) {
+    for (let zi = 0; zi < count; zi++) {
+      const x = sep * (xi - count / 2)
+      const z = sep * (zi - count / 2)
+      grid.push([x, 0, z])
+    }
+  }
+
+  const positions = new Float32Array(grid.length * 3)
+  grid.forEach((p, i) => {
+    positions[i * 3] = p[0]
+    positions[i * 3 + 1] = p[1]
+    positions[i * 3 + 2] = p[2]
+  })
+
+  useFrame(({ clock }) => {
+    const t = clock.getElapsedTime()
+    const mesh = meshRef.current
+    if (!mesh) return
+
+    const pos = mesh.geometry.attributes.position as THREE.BufferAttribute
+    for (let i = 0; i < pos.count; i++) {
+      const x = pos.getX(i)
+      const z = pos.getZ(i)
+      const y = 0.3 * Math.sin(0.4 * x + t) * Math.cos(0.4 * z + t) + 0.5
+      pos.setY(i, y)
+    }
+    pos.needsUpdate = true
+  })
+
+  return (
+    <points ref={meshRef}>
+      <bufferGeometry attach="geometry">
+        <bufferAttribute
+          attach="attributes-position"
+          args={[positions, 3]}
+        />
+      </bufferGeometry>
+      <pointsMaterial
+        attach="material"
+        color="#00ff00"
+        size={0.1}
+        sizeAttenuation={false}
+        transparent
+        opacity={1.0}
+      />
+    </points>
+  )
+}
 
 export default function TopologicalBackground(): React.JSX.Element {
   return (
@@ -73,7 +73,6 @@ export default function TopologicalBackground(): React.JSX.Element {
       background: 'linear-gradient(135deg, #000000 0%, #1a1a1a 100%)',
       pointerEvents: 'none'
     }}>
-      {/* Three.js Canvas commented out - needs debugging
       <Canvas
         camera={{ position: [0, 5, 10], fov: 45 }}
         style={{ pointerEvents: 'none' }}
@@ -83,7 +82,6 @@ export default function TopologicalBackground(): React.JSX.Element {
         <TopologicalGrid />
         <OrbitControls enableZoom={false} enablePan={false} enableRotate={false} autoRotate autoRotateSpeed={0.5} />
       </Canvas>
-      */}
     </div>
   )
 }

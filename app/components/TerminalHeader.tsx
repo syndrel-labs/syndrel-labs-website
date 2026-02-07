@@ -16,11 +16,11 @@ const TerminalHeader = ({ onTypingComplete }: TerminalHeaderProps) => {
 
   const baseText = 'syndrel_';
 
-  // Initial typing effect - start with syndrel_lattice
+  // Initial typing effect - start with syndrel_obi
   useEffect(() => {
     if (phase !== 'initial') return;
 
-    const initialText = 'syndrel_lattice';
+    const initialText = 'syndrel_obi';
     const timeout = setTimeout(() => {
       if (currentIndex < initialText.length) {
         setDisplayText(initialText.slice(0, currentIndex + 1));
